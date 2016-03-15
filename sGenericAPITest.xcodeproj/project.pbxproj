@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		D54DE3331C8FFA8500FE2838 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54DE3321C8FFA8500FE2838 /* AppDelegate.swift */; };
-		D54DE3351C8FFA8500FE2838 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54DE3341C8FFA8500FE2838 /* ViewController.swift */; };
 		D54DE3381C8FFA8500FE2838 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D54DE3361C8FFA8500FE2838 /* Main.storyboard */; };
 		D54DE33A1C8FFA8500FE2838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D54DE3391C8FFA8500FE2838 /* Assets.xcassets */; };
 		D54DE33D1C8FFA8500FE2838 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D54DE33B1C8FFA8500FE2838 /* LaunchScreen.storyboard */; };
 		D54DE3481C8FFA8500FE2838 /* sGenericAPITestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54DE3471C8FFA8500FE2838 /* sGenericAPITestTests.swift */; };
 		D54DE3531C8FFA8500FE2838 /* sGenericAPITestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54DE3521C8FFA8500FE2838 /* sGenericAPITestUITests.swift */; };
+		D54DE3611C901F3D00FE2838 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54DE3601C901F3D00FE2838 /* MainTableViewController.swift */; };
+		D54DE3631C90241700FE2838 /* PhotoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54DE3621C90241700FE2838 /* PhotoViewCell.swift */; };
+		D57B17DE1C926DAC0045CE77 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D57B17DD1C926DAC0045CE77 /* Default-568h@2x.png */; };
+		D57B17E01C9291E40045CE77 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57B17DF1C9291E40045CE77 /* Photos.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,6 @@
 /* Begin PBXFileReference section */
 		D54DE32F1C8FFA8500FE2838 /* sGenericAPITest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sGenericAPITest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54DE3321C8FFA8500FE2838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D54DE3341C8FFA8500FE2838 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D54DE3371C8FFA8500FE2838 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D54DE3391C8FFA8500FE2838 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D54DE33C1C8FFA8500FE2838 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +49,10 @@
 		D54DE34E1C8FFA8500FE2838 /* sGenericAPITestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sGenericAPITestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54DE3521C8FFA8500FE2838 /* sGenericAPITestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sGenericAPITestUITests.swift; sourceTree = "<group>"; };
 		D54DE3541C8FFA8500FE2838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D54DE3601C901F3D00FE2838 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		D54DE3621C90241700FE2838 /* PhotoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewCell.swift; sourceTree = "<group>"; };
+		D57B17DD1C926DAC0045CE77 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		D57B17DF1C9291E40045CE77 /* Photos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +83,7 @@
 		D54DE3261C8FFA8500FE2838 = {
 			isa = PBXGroup;
 			children = (
+				D57B17DD1C926DAC0045CE77 /* Default-568h@2x.png */,
 				D54DE3311C8FFA8500FE2838 /* sGenericAPITest */,
 				D54DE3461C8FFA8500FE2838 /* sGenericAPITestTests */,
 				D54DE3511C8FFA8500FE2838 /* sGenericAPITestUITests */,
@@ -98,7 +105,9 @@
 			isa = PBXGroup;
 			children = (
 				D54DE3321C8FFA8500FE2838 /* AppDelegate.swift */,
-				D54DE3341C8FFA8500FE2838 /* ViewController.swift */,
+				D54DE3601C901F3D00FE2838 /* MainTableViewController.swift */,
+				D54DE3621C90241700FE2838 /* PhotoViewCell.swift */,
+				D57B17DF1C9291E40045CE77 /* Photos.swift */,
 				D54DE3361C8FFA8500FE2838 /* Main.storyboard */,
 				D54DE3391C8FFA8500FE2838 /* Assets.xcassets */,
 				D54DE33B1C8FFA8500FE2838 /* LaunchScreen.storyboard */,
@@ -230,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D54DE33D1C8FFA8500FE2838 /* LaunchScreen.storyboard in Resources */,
+				D57B17DE1C926DAC0045CE77 /* Default-568h@2x.png in Resources */,
 				D54DE33A1C8FFA8500FE2838 /* Assets.xcassets in Resources */,
 				D54DE3381C8FFA8500FE2838 /* Main.storyboard in Resources */,
 			);
@@ -256,8 +266,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D54DE3351C8FFA8500FE2838 /* ViewController.swift in Sources */,
+				D57B17E01C9291E40045CE77 /* Photos.swift in Sources */,
+				D54DE3611C901F3D00FE2838 /* MainTableViewController.swift in Sources */,
 				D54DE3331C8FFA8500FE2838 /* AppDelegate.swift in Sources */,
+				D54DE3631C90241700FE2838 /* PhotoViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,9 +411,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = sGenericAPITest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = duncwa.sGenericAPITest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ziptest.sGenericAPITest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -410,9 +423,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = sGenericAPITest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = duncwa.sGenericAPITest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ziptest.sGenericAPITest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -484,6 +498,7 @@
 				D54DE3591C8FFA8500FE2838 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D54DE35A1C8FFA8500FE2838 /* Build configuration list for PBXNativeTarget "sGenericAPITestTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +507,7 @@
 				D54DE35C1C8FFA8500FE2838 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D54DE35D1C8FFA8500FE2838 /* Build configuration list for PBXNativeTarget "sGenericAPITestUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +516,7 @@
 				D54DE35F1C8FFA8500FE2838 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
