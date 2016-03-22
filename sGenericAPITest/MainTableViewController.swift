@@ -74,14 +74,7 @@ class MainTableViewController: UITableViewController, NSCopying {
       {
         self.photos.title = "\(result_string)"
       }
-      //self.photos.albumId = self.photosDictionary["albumId"]! as! String
-      //self.photos.thumbnailUrl = self.photosDictionary["thumbnailUrl"]! as! String
-      //self.photos.title = self.photosDictionary["title"]! as! String
-     
-      print(self.photos.albumId)
-      print(self.photos.thumbnailUrl)
-      print(self.photos.title)
-      
+    
       cell.textLabel?.text = self.photos.thumbnailUrl as String
       
       let url: String = self.photos.thumbnailUrl.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
@@ -98,11 +91,13 @@ class MainTableViewController: UITableViewController, NSCopying {
       let task = NSURLSession.sharedSession().dataTaskWithURL(urlImage, completionHandler: {data, response, error -> Void in
       if (data != nil) {
       self.image = UIImage(data: data!)!
-      dispatch_async(dispatch_get_main_queue(), {
-        let updateCell: PhotoViewCell = self.tableView.cellForRowAtIndexPath(index)! as! PhotoViewCell
-        updateCell.imageView!.image = self.image
-      
-      })
+        if (self.image != nil) {
+          dispatch_async(dispatch_get_main_queue(), {
+            if let updateCell = self.tableView?.cellForRowAtIndexPath(index) as? PhotoViewCell {
+              updateCell.imageView!.image = self.image
+            }
+          })
+        }
     
       } else {
         print("An image retrieval error occurred")
