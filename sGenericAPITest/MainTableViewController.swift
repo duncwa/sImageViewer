@@ -17,7 +17,7 @@ class MainTableViewController: UITableViewController, NSCopying {
   let photoCellIdentifier = "photoViewCell"
   var json: [[String: AnyObject]] = []
 
-  var photos: Photos!
+  var photos = Photos(albumId: "9", photoId: "999", title: "title", url: "http://duncwa.com", thumbnailUrl: "http://duncwa.com/picture")
   var data: NSMutableArray = []
   var photosArray: [[String: AnyObject]] = []
   var photosDictionary: Dictionary <String, AnyObject> = [:]
@@ -62,16 +62,27 @@ class MainTableViewController: UITableViewController, NSCopying {
       print("3 of 3 - cellForRowAtIndexPath")
     
       self.photosDictionary = (photosArray[indexPath.row] as [String: AnyObject])
-   
-      self.photos.albumId = self.photosDictionary["albumId"]!
-      self.photos.thumbnailUrl = photosDictionary["thumbnailUrl"]!
-      self.photos.title = photosDictionary["title"]!
+      if let result_number = self.photosDictionary["albumId"]! as? NSNumber
+      {
+        self.photos.albumId = "\(result_number)"
+      }
+      if let result_string = self.photosDictionary["thumbnailUrl"]! as? String
+      {
+        self.photos.thumbnailUrl = "\(result_string)"
+      }
+      if let result_string = self.photosDictionary["title"]! as? String
+      {
+        self.photos.title = "\(result_string)"
+      }
+      //self.photos.albumId = self.photosDictionary["albumId"]! as! String
+      //self.photos.thumbnailUrl = self.photosDictionary["thumbnailUrl"]! as! String
+      //self.photos.title = self.photosDictionary["title"]! as! String
      
       print(self.photos.albumId)
       print(self.photos.thumbnailUrl)
       print(self.photos.title)
       
-      cell.textLabel?.text = self.photos.thumbnailUrl as? String
+      cell.textLabel?.text = self.photos.thumbnailUrl as String
       
       let url: String = self.photos.thumbnailUrl.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
 
