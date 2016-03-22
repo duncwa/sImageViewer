@@ -3,7 +3,7 @@
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "zipicon.png",
+      "filename" : "ficon58.png",
       "scale" : "2x"
     },
     {
@@ -24,7 +24,7 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "zipicon120.png",
+      "filename" : "ficon.png",
       "scale" : "2x"
     },
     {
@@ -55,19 +55,19 @@
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "zipicon76.png",
+      "filename" : "ficon76.png",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "zipicon152.png",
+      "filename" : "ficon152.png",
       "scale" : "2x"
     },
     {
       "size" : "83.5x83.5",
       "idiom" : "ipad",
-      "filename" : "zipicon167.png",
+      "filename" : "ficon167.png",
       "scale" : "2x"
     }
   ],

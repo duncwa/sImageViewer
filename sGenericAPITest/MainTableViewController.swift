@@ -75,7 +75,7 @@ class MainTableViewController: UITableViewController, NSCopying {
         self.photos.title = "\(result_string)"
       }
     
-      cell.textLabel?.text = self.photos.thumbnailUrl as String
+      cell.textLabel?.text = self.photos.title as String
       
       let url: String = self.photos.thumbnailUrl.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
 
