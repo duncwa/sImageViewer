@@ -57,16 +57,16 @@
 		D54914FA1CA1C16200E1D653 /* ficon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ficon120.png; sourceTree = "<group>"; };
 		D54914FB1CA1C16200E1D653 /* ficon152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ficon152.png; sourceTree = "<group>"; };
 		D54914FC1CA1C16200E1D653 /* ficon167.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ficon167.png; sourceTree = "<group>"; };
-		D54DE32F1C8FFA8500FE2838 /* sGenericAPITest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sGenericAPITest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D54DE32F1C8FFA8500FE2838 /* sFastIcon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sFastIcon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54DE3321C8FFA8500FE2838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D54DE3371C8FFA8500FE2838 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D54DE3391C8FFA8500FE2838 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D54DE33C1C8FFA8500FE2838 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D54DE33E1C8FFA8500FE2838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D54DE3431C8FFA8500FE2838 /* sGenericAPITestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sGenericAPITestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D54DE3431C8FFA8500FE2838 /* sFastIconTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sFastIconTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54DE3471C8FFA8500FE2838 /* sGenericAPITestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sGenericAPITestTests.swift; sourceTree = "<group>"; };
 		D54DE3491C8FFA8500FE2838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D54DE34E1C8FFA8500FE2838 /* sGenericAPITestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sGenericAPITestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D54DE34E1C8FFA8500FE2838 /* sFastIconUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sFastIconUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54DE3521C8FFA8500FE2838 /* sGenericAPITestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sGenericAPITestUITests.swift; sourceTree = "<group>"; };
 		D54DE3541C8FFA8500FE2838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D54DE3601C901F3D00FE2838 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
@@ -131,9 +131,9 @@
 		D54DE3301C8FFA8500FE2838 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D54DE32F1C8FFA8500FE2838 /* sGenericAPITest.app */,
-				D54DE3431C8FFA8500FE2838 /* sGenericAPITestTests.xctest */,
-				D54DE34E1C8FFA8500FE2838 /* sGenericAPITestUITests.xctest */,
+				D54DE32F1C8FFA8500FE2838 /* sFastIcon.app */,
+				D54DE3431C8FFA8500FE2838 /* sFastIconTests.xctest */,
+				D54DE34E1C8FFA8500FE2838 /* sFastIconUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -175,9 +175,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D54DE32E1C8FFA8500FE2838 /* sGenericAPITest */ = {
+		D54DE32E1C8FFA8500FE2838 /* sFastIcon */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D54DE3571C8FFA8500FE2838 /* Build configuration list for PBXNativeTarget "sGenericAPITest" */;
+			buildConfigurationList = D54DE3571C8FFA8500FE2838 /* Build configuration list for PBXNativeTarget "sFastIcon" */;
 			buildPhases = (
 				D54DE32B1C8FFA8500FE2838 /* Sources */,
 				D54DE32C1C8FFA8500FE2838 /* Frameworks */,
@@ -187,14 +187,14 @@
 			);
 			dependencies = (
 			);
-			name = sGenericAPITest;
+			name = sFastIcon;
 			productName = sGenericAPITest;
-			productReference = D54DE32F1C8FFA8500FE2838 /* sGenericAPITest.app */;
+			productReference = D54DE32F1C8FFA8500FE2838 /* sFastIcon.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D54DE3421C8FFA8500FE2838 /* sGenericAPITestTests */ = {
+		D54DE3421C8FFA8500FE2838 /* sFastIconTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D54DE35A1C8FFA8500FE2838 /* Build configuration list for PBXNativeTarget "sGenericAPITestTests" */;
+			buildConfigurationList = D54DE35A1C8FFA8500FE2838 /* Build configuration list for PBXNativeTarget "sFastIconTests" */;
 			buildPhases = (
 				D54DE33F1C8FFA8500FE2838 /* Sources */,
 				D54DE3401C8FFA8500FE2838 /* Frameworks */,
@@ -205,14 +205,14 @@
 			dependencies = (
 				D54DE3451C8FFA8500FE2838 /* PBXTargetDependency */,
 			);
-			name = sGenericAPITestTests;
+			name = sFastIconTests;
 			productName = sGenericAPITestTests;
-			productReference = D54DE3431C8FFA8500FE2838 /* sGenericAPITestTests.xctest */;
+			productReference = D54DE3431C8FFA8500FE2838 /* sFastIconTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D54DE34D1C8FFA8500FE2838 /* sGenericAPITestUITests */ = {
+		D54DE34D1C8FFA8500FE2838 /* sFastIconUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D54DE35D1C8FFA8500FE2838 /* Build configuration list for PBXNativeTarget "sGenericAPITestUITests" */;
+			buildConfigurationList = D54DE35D1C8FFA8500FE2838 /* Build configuration list for PBXNativeTarget "sFastIconUITests" */;
 			buildPhases = (
 				D54DE34A1C8FFA8500FE2838 /* Sources */,
 				D54DE34B1C8FFA8500FE2838 /* Frameworks */,
@@ -223,9 +223,9 @@
 			dependencies = (
 				D54DE3501C8FFA8500FE2838 /* PBXTargetDependency */,
 			);
-			name = sGenericAPITestUITests;
+			name = sFastIconUITests;
 			productName = sGenericAPITestUITests;
-			productReference = D54DE34E1C8FFA8500FE2838 /* sGenericAPITestUITests.xctest */;
+			productReference = D54DE34E1C8FFA8500FE2838 /* sFastIconUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -264,9 +264,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D54DE32E1C8FFA8500FE2838 /* sGenericAPITest */,
-				D54DE3421C8FFA8500FE2838 /* sGenericAPITestTests */,
-				D54DE34D1C8FFA8500FE2838 /* sGenericAPITestUITests */,
+				D54DE32E1C8FFA8500FE2838 /* sFastIcon */,
+				D54DE3421C8FFA8500FE2838 /* sFastIconTests */,
+				D54DE34D1C8FFA8500FE2838 /* sFastIconUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -342,12 +342,12 @@
 /* Begin PBXTargetDependency section */
 		D54DE3451C8FFA8500FE2838 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D54DE32E1C8FFA8500FE2838 /* sGenericAPITest */;
+			target = D54DE32E1C8FFA8500FE2838 /* sFastIcon */;
 			targetProxy = D54DE3441C8FFA8500FE2838 /* PBXContainerItemProxy */;
 		};
 		D54DE3501C8FFA8500FE2838 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D54DE32E1C8FFA8500FE2838 /* sGenericAPITest */;
+			target = D54DE32E1C8FFA8500FE2838 /* sFastIcon */;
 			targetProxy = D54DE34F1C8FFA8500FE2838 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -539,7 +539,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D54DE3571C8FFA8500FE2838 /* Build configuration list for PBXNativeTarget "sGenericAPITest" */ = {
+		D54DE3571C8FFA8500FE2838 /* Build configuration list for PBXNativeTarget "sFastIcon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D54DE3581C8FFA8500FE2838 /* Debug */,
@@ -548,7 +548,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D54DE35A1C8FFA8500FE2838 /* Build configuration list for PBXNativeTarget "sGenericAPITestTests" */ = {
+		D54DE35A1C8FFA8500FE2838 /* Build configuration list for PBXNativeTarget "sFastIconTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D54DE35B1C8FFA8500FE2838 /* Debug */,
@@ -557,7 +557,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D54DE35D1C8FFA8500FE2838 /* Build configuration list for PBXNativeTarget "sGenericAPITestUITests" */ = {
+		D54DE35D1C8FFA8500FE2838 /* Build configuration list for PBXNativeTarget "sFastIconUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D54DE35E1C8FFA8500FE2838 /* Debug */,

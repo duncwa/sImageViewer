@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D54DE32E1C8FFA8500FE2838"
-               BuildableName = "sGenericAPITest.app"
-               BlueprintName = "sGenericAPITest"
+               BuildableName = "sFastIcon.app"
+               BlueprintName = "sFastIcon"
                ReferencedContainer = "container:sFastIcon.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D54DE3421C8FFA8500FE2838"
-               BuildableName = "sGenericAPITestTests.xctest"
-               BlueprintName = "sGenericAPITestTests"
+               BuildableName = "sFastIconTests.xctest"
+               BlueprintName = "sFastIconTests"
                ReferencedContainer = "container:sFastIcon.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -43,8 +43,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D54DE34D1C8FFA8500FE2838"
-               BuildableName = "sGenericAPITestUITests.xctest"
-               BlueprintName = "sGenericAPITestUITests"
+               BuildableName = "sFastIconUITests.xctest"
+               BlueprintName = "sFastIconUITests"
                ReferencedContainer = "container:sFastIcon.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -53,8 +53,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D54DE32E1C8FFA8500FE2838"
-            BuildableName = "sGenericAPITest.app"
-            BlueprintName = "sGenericAPITest"
+            BuildableName = "sFastIcon.app"
+            BlueprintName = "sFastIcon"
             ReferencedContainer = "container:sFastIcon.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -76,8 +76,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D54DE32E1C8FFA8500FE2838"
-            BuildableName = "sGenericAPITest.app"
-            BlueprintName = "sGenericAPITest"
+            BuildableName = "sFastIcon.app"
+            BlueprintName = "sFastIcon"
             ReferencedContainer = "container:sFastIcon.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -95,8 +95,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D54DE32E1C8FFA8500FE2838"
-            BuildableName = "sGenericAPITest.app"
-            BlueprintName = "sGenericAPITest"
+            BuildableName = "sFastIcon.app"
+            BlueprintName = "sFastIcon"
             ReferencedContainer = "container:sFastIcon.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

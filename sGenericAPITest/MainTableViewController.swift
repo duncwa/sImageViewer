@@ -107,7 +107,7 @@ class MainTableViewController: UITableViewController, NSCopying {
     task.resume()
   }
 
-  // MARK: - Deep copy of an object
+  // MARK: - Deep copy of a pass by reference object
   
   func copyWithZone(zoneCopy: NSZone) -> AnyObject {
       let copy = self.json
