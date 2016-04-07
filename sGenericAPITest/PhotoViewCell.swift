@@ -10,6 +10,7 @@ import UIKit
 
 class PhotoViewCell: UITableViewCell {
 
+  @IBOutlet weak var photoCount: UILabel!
   @IBOutlet var title: UILabel!
   @IBOutlet var photoImage: UIImageView!
   

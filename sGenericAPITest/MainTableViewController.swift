@@ -59,12 +59,12 @@ class MainTableViewController: UITableViewController, NSCopying {
 
   func photoCellAtIndexPath(indexPath:NSIndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCellWithIdentifier(photoCellIdentifier) as! PhotoViewCell
-      print("3 of 3 - cellForRowAtIndexPath")
+      //print("3 of 3 - cellForRowAtIndexPath")
     
       self.photosDictionary = (photosArray[indexPath.row] as [String: AnyObject])
-      if let result_number = self.photosDictionary["albumId"]! as? NSNumber
+      if let result_number = self.photosDictionary["id"]! as? NSNumber
       {
-        self.photos.albumId = "\(result_number)"
+        self.photos.photoId = "\(result_number)"
       }
       if let result_string = self.photosDictionary["thumbnailUrl"]! as? String
       {
@@ -75,13 +75,14 @@ class MainTableViewController: UITableViewController, NSCopying {
         self.photos.title = "\(result_string)"
       }
     
-      cell.textLabel?.text = self.photos.title as String
-      
+      cell.title.text = self.photos.title as String
+      //cell.photoCount.text = String(format: "%d", indexPath.row)
+  
       let url: String = self.photos.thumbnailUrl.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
 
       self.imageUrl = NSURL(string: url)
       imageGet(self.imageUrl, index: indexPath)
-      cell.imageView!.image = self.image
+      cell.photoCount.text = String(format: "%d", indexPath.row)
       return cell
   }
   
@@ -94,7 +95,7 @@ class MainTableViewController: UITableViewController, NSCopying {
         if (self.image != nil) {
           dispatch_async(dispatch_get_main_queue(), {
             if let updateCell = self.tableView?.cellForRowAtIndexPath(index) as? PhotoViewCell {
-              updateCell.imageView!.image = self.image
+              updateCell.photoImage.image = self.image
             }
           })
         }
@@ -127,7 +128,7 @@ class MainTableViewController: UITableViewController, NSCopying {
       let statusCode = httpResponse.statusCode
 
       if (statusCode == 200) {
-        print("1 of 3 - Files downloaded successfully.")
+        //print("1 of 3 - Files downloaded successfully.")
       }
       
       if (statusCode == 200) {
@@ -137,13 +138,13 @@ class MainTableViewController: UITableViewController, NSCopying {
           self.photosArray = self.copy() as! [[String : AnyObject]]
           dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.tableView.reloadData()
-            print("2 of 3 - self.tableView.reloadData")
+            //print("2 of 3 - self.tableView.reloadData")
           })
         } catch {
           print("Error with Json: \(error)")
         }
         self.tableView.reloadData()
-        print("2 of 3 - self.tableView.reloadData")
+        //print("2 of 3 - self.tableView.reloadData")
       }
     
     }
