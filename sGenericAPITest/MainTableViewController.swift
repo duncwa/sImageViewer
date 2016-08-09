@@ -21,7 +21,7 @@ class MainTableViewController: UITableViewController, NSCopying {
   var data: NSMutableArray = []
   var photosArray: [[String: AnyObject]] = []
   var photosDictionary: Dictionary <String, AnyObject> = [:]
-  var imageUrl: NSURL!
+  var imageUrl: URL!
   var image: UIImage!
 
   //MARK: - Initialization
@@ -29,7 +29,7 @@ class MainTableViewController: UITableViewController, NSCopying {
   override func viewDidLoad() {
       super.viewDidLoad()
 
-      dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+      DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
         // Get data from file/network/other in background
         self.fetchedData()
       }
@@ -42,26 +42,26 @@ class MainTableViewController: UITableViewController, NSCopying {
 
   // MARK: - Table view data source
 
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+  override func numberOfSections(in tableView: UITableView) -> Int {
       // return the number of sections
       return 1
   }
 
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       //  return the number of rows
       return photosArray.count
   }
 
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
       return photoCellAtIndexPath(indexPath)
   }
 
-  func photoCellAtIndexPath(indexPath:NSIndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCellWithIdentifier(photoCellIdentifier) as! PhotoViewCell
+  func photoCellAtIndexPath(_ indexPath:IndexPath) -> UITableViewCell {
+      let cell = tableView.dequeueReusableCell(withIdentifier: photoCellIdentifier) as! PhotoViewCell
       //print("3 of 3 - cellForRowAtIndexPath")
     
-      self.photosDictionary = (photosArray[indexPath.row] as [String: AnyObject])
+      self.photosDictionary = (photosArray[(indexPath as NSIndexPath).row] as [String: AnyObject])
       if let result_number = self.photosDictionary["id"]! as? NSNumber
       {
         self.photos.photoId = "\(result_number)"
@@ -78,23 +78,23 @@ class MainTableViewController: UITableViewController, NSCopying {
       cell.title.text = self.photos.title as String
       //cell.photoCount.text = String(format: "%d", indexPath.row)
   
-      let url: String = self.photos.thumbnailUrl.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+      let url: String = self.photos.thumbnailUrl.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
 
-      self.imageUrl = NSURL(string: url)
+      self.imageUrl = URL(string: url)
       imageGet(self.imageUrl, index: indexPath)
-      cell.photoCount.text = String(format: "%d", indexPath.row)
+      cell.photoCount.text = String(format: "%d", (indexPath as NSIndexPath).row)
       return cell
   }
   
   // MARK: - Get image from URL for tableview
 
-  func imageGet(urlImage: NSURL, index: NSIndexPath) {
-      let task = NSURLSession.sharedSession().dataTaskWithURL(urlImage, completionHandler: {data, response, error -> Void in
+  func imageGet(_ urlImage: URL, index: IndexPath) {
+      let task = URLSession.shared.dataTask(with: urlImage, completionHandler: {data, response, error -> Void in
       if (data != nil) {
       self.image = UIImage(data: data!)!
         if (self.image != nil) {
-          dispatch_async(dispatch_get_main_queue(), {
-            if let updateCell = self.tableView?.cellForRowAtIndexPath(index) as? PhotoViewCell {
+          DispatchQueue.main.async(execute: {
+            if let updateCell = self.tableView?.cellForRow(at: index) as? PhotoViewCell {
               updateCell.photoImage.image = self.image
             }
           })
@@ -110,7 +110,7 @@ class MainTableViewController: UITableViewController, NSCopying {
 
   // MARK: - Deep copy of a pass by reference object
   
-  func copyWithZone(zoneCopy: NSZone) -> AnyObject {
+  func copy(with zoneCopy: NSZone?) -> AnyObject {
       let copy = self.json
       return copy
   }
@@ -118,13 +118,13 @@ class MainTableViewController: UITableViewController, NSCopying {
   // MARK: - Asynchronous data fetch in background
 
   func fetchedData() {
-      let requestURL: NSURL = NSURL(string: "http://jsonplaceholder.typicode.com/photos")!
-      let urlRequest: NSMutableURLRequest = NSMutableURLRequest(URL: requestURL)
-      let session = NSURLSession.sharedSession()
-      let task = session.dataTaskWithRequest(urlRequest) {
+      let requestURL: URL = URL(string: "http://jsonplaceholder.typicode.com/photos")!
+      let urlRequest: NSMutableURLRequest = NSMutableURLRequest(url: requestURL)
+      let session = URLSession.shared
+      let task = session.dataTask(with: urlRequest) {
         (data, response, error) -> Void in
 
-      let httpResponse = response as! NSHTTPURLResponse
+      let httpResponse = response as! HTTPURLResponse
       let statusCode = httpResponse.statusCode
 
       if (statusCode == 200) {
@@ -134,9 +134,9 @@ class MainTableViewController: UITableViewController, NSCopying {
       if (statusCode == 200) {
        
         do {
-          self.json = try NSJSONSerialization.JSONObjectWithData(data!, options:.AllowFragments) as! [[String:AnyObject]]
+          self.json = try JSONSerialization.jsonObject(with: data!, options:.allowFragments) as! [[String:AnyObject]]
           self.photosArray = self.copy() as! [[String : AnyObject]]
-          dispatch_async(dispatch_get_main_queue(), { () -> Void in
+          DispatchQueue.main.async(execute: { () -> Void in
             self.tableView.reloadData()
             //print("2 of 3 - self.tableView.reloadData")
           })
