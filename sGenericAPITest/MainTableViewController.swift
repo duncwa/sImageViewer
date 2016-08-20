@@ -28,12 +28,24 @@ class MainTableViewController: UITableViewController, NSCopying {
   
   override func viewDidLoad() {
       super.viewDidLoad()
-
-      DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
-        // Get data from file/network/other in background
-        self.fetchedData()
-      }
+    
+    DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+      // Get data from file/network/other in background
+      self.fetchedData()
+    }
   }
+  
+  // Generic form
+  /*  DispatchQueue.global().async {
+      
+      // Background Thread
+      // // qos' default value is ´DispatchQoS.QoSClass.default`
+      
+      DispatchQueue.main.async {
+        // Run UI Updates
+      }
+    }
+  */
 
   override func didReceiveMemoryWarning() {
       super.didReceiveMemoryWarning()
@@ -119,9 +131,10 @@ class MainTableViewController: UITableViewController, NSCopying {
 
   func fetchedData() {
       let requestURL: URL = URL(string: "http://jsonplaceholder.typicode.com/photos")!
-      let urlRequest: NSMutableURLRequest = NSMutableURLRequest(url: requestURL)
-      let session = URLSession.shared
-      let task = session.dataTask(with: urlRequest) {
+      //let urlRequest: NSMutableURLRequest = NSMutableURLRequest(url: requestURL)
+      //let session = URLSession.shared
+      let request = URLRequest(url: requestURL)
+      let task = URLSession.shared.dataTask(with: request) {
         (data, response, error) -> Void in
 
       let httpResponse = response as! HTTPURLResponse
