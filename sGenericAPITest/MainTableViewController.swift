@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import Photos
 
 class MainTableViewController: UITableViewController, NSCopying {
-
+  
   //MARK: - Properties
   
   let kPhotosURL:String = "http://jsonplaceholder.typicode.com/photos"
@@ -108,6 +107,8 @@ class MainTableViewController: UITableViewController, NSCopying {
           DispatchQueue.main.async(execute: {
             if let updateCell = self.tableView?.cellForRow(at: index) as? PhotoViewCell {
               updateCell.photoImage.image = self.image
+              print("3 of 3 - updateCell.photoImage.image [main queue asynchronously]", index)
+
             }
           })
         }
@@ -122,9 +123,9 @@ class MainTableViewController: UITableViewController, NSCopying {
 
   // MARK: - Deep copy of a pass by reference object
   
-  func copy(with zoneCopy: NSZone?) -> AnyObject {
-      let copy = self.json
-      return copy
+  public func copy(with zone: NSZone? = nil) -> Any {
+    let copy = self.json
+    return copy as AnyObject
   }
 
   // MARK: - Asynchronous data fetch in background
@@ -140,9 +141,6 @@ class MainTableViewController: UITableViewController, NSCopying {
       let httpResponse = response as! HTTPURLResponse
       let statusCode = httpResponse.statusCode
 
-      if (statusCode == 200) {
-        //print("1 of 3 - Files downloaded successfully.")
-      }
       
       if (statusCode == 200) {
        
@@ -151,13 +149,13 @@ class MainTableViewController: UITableViewController, NSCopying {
           self.photosArray = self.copy() as! [[String : AnyObject]]
           DispatchQueue.main.async(execute: { () -> Void in
             self.tableView.reloadData()
-            //print("2 of 3 - self.tableView.reloadData")
+            print("1 of 3 - self.tableView.reloadData [main queue synchronously]")
           })
         } catch {
           print("Error with Json: \(error)")
         }
         self.tableView.reloadData()
-        //print("2 of 3 - self.tableView.reloadData")
+        print("2 of 3 - self.tableView.reloadData [background queue ansynchronously]")
       }
     
     }
