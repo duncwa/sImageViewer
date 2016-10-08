@@ -167,7 +167,7 @@
 				TargetAttributes = {
 					D54DE32E1C8FFA8500FE2838 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 35CW3L3U5Z;
+						DevelopmentTeam = 427JR2K8TU;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -344,7 +344,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 35CW3L3U5Z;
+				DEVELOPMENT_TEAM = 427JR2K8TU;
 				INFOPLIST_FILE = sGenericAPITest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.duncwa.sfasticon;
@@ -357,8 +357,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				DEVELOPMENT_TEAM = 35CW3L3U5Z;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 427JR2K8TU;
 				INFOPLIST_FILE = sGenericAPITest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.duncwa.sfasticon;
