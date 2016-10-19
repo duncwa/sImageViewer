@@ -48,6 +48,26 @@
                ReferencedContainer = "container:sFastIcon.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A6278A651DA96BF8003CA73A"
+               BuildableName = "sFastImageUITests.xctest"
+               BlueprintName = "sFastImageUITests"
+               ReferencedContainer = "container:sFastIcon.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A6278A571DA96BE2003CA73A"
+               BuildableName = "sFastImageTests.xctest"
+               BlueprintName = "sFastImageTests"
+               ReferencedContainer = "container:sFastIcon.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
