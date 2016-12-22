@@ -149,13 +149,13 @@ class MainTableViewController: UITableViewController, NSCopying {
           self.photosArray = self.copy() as! [[String : AnyObject]]
           DispatchQueue.main.async(execute: { () -> Void in
             self.tableView.reloadData()
-            print("1 of 3 - self.tableView.reloadData [main queue synchronously]")
+            print("1 of 3 - self.tableView.reloadData [main queue asynchronously]")
           })
         } catch {
           print("Error with Json: \(error)")
         }
         self.tableView.reloadData()
-        print("2 of 3 - self.tableView.reloadData [background queue ansynchronously]")
+        print("2 of 3 - self.tableView.reloadData [background queue asynchronously]")
       }
     
     }
