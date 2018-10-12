@@ -22,4 +22,5 @@ class Photos {
     self.url = url
     self.thumbnailUrl = thumbnailUrl
   }
+  
 }
