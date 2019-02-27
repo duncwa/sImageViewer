@@ -1,6 +1,6 @@
 //
 //  PhotoViewCell.swift
-//  sGenericAPITest
+//  sFastIcon
 //
 //  Created by Duncan Wallace on 3/9/16.
 //  Copyright © 2016 Duncan Wallace. All rights reserved.
@@ -17,6 +17,7 @@ class PhotoViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+      photoCount.accessibilityLabel = "PhotoCount"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

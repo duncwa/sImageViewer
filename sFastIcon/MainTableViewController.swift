@@ -1,6 +1,6 @@
 //
 //  MainTableViewController.swift
-//  sGenericAPITest
+//  sFastIcon
 //
 //  Created by Duncan Wallace on 3/9/16.
 //  Copyright © 2016 Duncan Wallace. All rights reserved.
@@ -26,8 +26,9 @@ class MainTableViewController: UITableViewController, NSCopying {
   //MARK: - Initialization
   
   override func viewDidLoad() {
-      super.viewDidLoad()
+    super.viewDidLoad()
     
+    view.accessibilityIdentifier = "mainView"
     DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
       // Get data from file/network/other in background
       self.fetchedData()
@@ -82,6 +83,7 @@ class MainTableViewController: UITableViewController, NSCopying {
       self.imageUrl = URL(string: url)
       imageGet(self.imageUrl, index: indexPath)
       cell.photoCount.text = String(format: "%d", (indexPath as NSIndexPath).row)
+      cell.photoCount.accessibilityIdentifier = "photoCount"
       return cell
   }
   
@@ -142,8 +144,8 @@ class MainTableViewController: UITableViewController, NSCopying {
         } catch {
           print("Error with Json: \(error)")
         }
-        self.tableView.reloadData()
-        print("2 of 3 - self.tableView.reloadData [background queue asynchronously]")
+          self.tableView.reloadData()
+          print("2 of 3 - self.tableView.reloadData [main queue asynchronously]")
       }
     
     }

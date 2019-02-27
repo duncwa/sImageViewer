@@ -1,6 +1,6 @@
 //
-//  sFastImageTests.swift
-//  sFastImageTests
+//  sFastIconTests.swift
+//  sFastIcon
 //
 //  Created by Jenkins on 10/8/16.
 //  Copyright © 2016 Duncan Wallace. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class sFastImageTests: XCTestCase {
+class sFastIconTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

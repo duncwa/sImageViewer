@@ -1,6 +1,6 @@
 //
 //  Photos.swift
-//  sGenericAPITest
+//  sFastIcon
 //
 //  Created by Duncan Wallace on 3/10/16.
 //  Copyright © 2016 Duncan Wallace. All rights reserved.

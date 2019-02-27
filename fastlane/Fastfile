@@ -1,0 +1,45 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Create beta version of sFastIcon iOS App"
+  lane :beta do
+    build_app(
+      get_certificates,           # invokes cert
+      get_provisioning_profile,   # invokes sigh
+      export_xcargs: "-allowProvisioningUpdates",
+      scheme: "sFastIcon",
+      include_bitcode: true
+    )
+  end
+
+  desc "Run tests for sFastIcon iOS App"
+  lane :test do
+    run_tests(
+      devices: ["iPhone X"],
+      scheme: "sFastIconUITests"
+    )
+  end
+
+  desc "Generate new localized screenshots for sFastIcon"
+  lane :screenshots do
+    capture_screenshots(
+      devices: ["iPhone X"],
+      scheme: "sFastIconUITests"
+    )
+  end
+end
