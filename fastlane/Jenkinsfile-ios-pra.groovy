@@ -6,11 +6,13 @@ pipeline {
           steps {
               echo 'Install Bundle Ruby Gems'
               sh 'bundle install'
+              sh 'pwd'
           }
       }
         stage('Build') {
             steps {
                 echo 'Test PRA'
+                sh 'pwd'
                 sh 'bundle exec fastlane test_ios_pra'
             }
         }
