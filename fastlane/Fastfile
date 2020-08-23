@@ -29,10 +29,7 @@ platform :ios do
 
   lane :generate_dev_ipa do
     build_app(
-      get_certificates,           # invokes cert
-      get_provisioning_profile,   # invokes sigh
-      export_xcargs: "-allowProvisioningUpdates",
-      scheme: "sFastIconUnitTests",
+      scheme: "sFastIcon",
       include_bitcode: true
     )
   end

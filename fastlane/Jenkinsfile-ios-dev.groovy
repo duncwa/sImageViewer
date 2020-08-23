@@ -11,26 +11,42 @@ pipeline {
               sh 'rvm list'
           }
       }
-        stage('Build') {
-            steps {
-                echo 'Test PRA'
-                sh 'bundle exec fastlane test_ios_pra'
-            }
+      stage('Build and Upload IPA') {
+          steps {
+              echo 'Generate IPA'
+              sh 'bundle exec fastlane generate_dev_ipa'
+          }
+          post {
+            always { stash includes: "fastlane/*_output/**/*", name: "generate_dev_ipa", allowEmpty: true }
+          }
+      }
+    }
+
+    post {
+      always {
+        script {
+          try { unstash "generate_dev_ipa" }  catch (e) { echo "Failed to unstash stash: " + e.toString() }
         }
-        stage('Inspect') {
-            steps {
-                echo 'Inspecting..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+        // sh "bundle exec fastlane danger"
+        archiveArtifacts artifacts: "fastlane/*_output/**/*", fingerprint: true
+      }
+
+      success {
+        sh "echo 'IPA Successful' "
+        slackSend channel: SLACK, message: "IPA Generate Successful - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
+      }
+
+      unstable {
+        sh "echo 'IPA Unsuccessful' "
+        slackSend channel: SLACK,  message: "IPA Generate Failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
+
+      }
+
+      failure {
+        sh "echo 'IPA Failed' "
+        slackSend channel: SLACK,  message: "IPA Generate Failed- ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
+
+      }
+
     }
 }
