@@ -56,18 +56,18 @@ pipeline {
 
       success {
         sh "echo 'Build Successful' "
-        slackSend channel: SLACK, "Build Successful - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
+        slackSend channel: SLACK, message: "Build Successful - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
       }
 
       unstable {
         sh "echo 'Build Unstable' "
-        slackSend channel: SLACK, "Tests Failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
+        slackSend channel: SLACK,  message: "Tests Failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
 
       }
 
       failure {
         sh "echo 'Build Failed' "
-        slackSend channel: SLACK, "Build Failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
+        slackSend channel: SLACK,  message: "Build Failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
 
       }
 
