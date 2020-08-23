@@ -27,9 +27,9 @@ class sFastIconUITests: XCTestCase {
     func testExample() {
       app.launch()
       
-      //let firstItem = self.app.staticTexts["accusamus beatae ad facilis cum similique qui sunt"]
+      let firstItem = self.app.staticTexts["accusamus beatae ad facilis cum similique qui sunt"]
       //let firstItem = self.app.staticTexts["accusam..."]
-      let firstItem = self.app.staticTexts["0"]
+      //let firstItem = self.app.staticTexts["0"]
 
 
       let exists = NSPredicate(format: "exists == true")

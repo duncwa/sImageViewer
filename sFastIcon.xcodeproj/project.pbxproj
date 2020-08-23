@@ -238,7 +238,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "Duncan Wallace";
 				TargetAttributes = {
 					A6278A571DA96BE2003CA73A = {
@@ -251,20 +251,20 @@
 					A6278A651DA96BF8003CA73A = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 427JR2K8TU;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1160;
 						ProvisioningStyle = Automatic;
 						TestTargetID = D54DE32E1C8FFA8500FE2838;
 					};
 					D54DE32E1C8FFA8500FE2838 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 427JR2K8TU;
-						LastSwiftMigration = 0920;
+						DevelopmentTeam = HN3MSBG9DP;
+						LastSwiftMigration = 1160;
 					};
 				};
 			};
 			buildConfigurationList = D54DE32A1C8FFA8500FE2838 /* Build configuration list for PBXProject "sFastIcon" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -440,7 +440,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = sFastIcon;
 			};
 			name = Debug;
@@ -461,7 +461,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = sFastIcon;
 			};
 			name = Release;
@@ -470,6 +470,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -527,6 +528,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -578,13 +580,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 427JR2K8TU;
+				DEVELOPMENT_TEAM = HN3MSBG9DP;
 				INFOPLIST_FILE = "$(SRCROOT)/sFastIcon/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.duncwa.sfasticon;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw4workonly.sfasticon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -593,14 +595,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 427JR2K8TU;
+				DEVELOPMENT_TEAM = HN3MSBG9DP;
 				INFOPLIST_FILE = "$(SRCROOT)/sFastIcon/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.duncwa.sfasticon;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw4workonly.sfasticon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

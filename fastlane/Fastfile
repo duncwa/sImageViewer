@@ -16,21 +16,39 @@
 default_platform(:ios)
 
 platform :ios do
-  desc "Create beta version of sFastIcon iOS App"
-  lane :test_ios_qe do
+  desc "Run unit tests for sFastIcon iOS App"
+  lane :generate_rls_ipa do
     build_app(
       get_certificates,           # invokes cert
       get_provisioning_profile,   # invokes sigh
       export_xcargs: "-allowProvisioningUpdates",
-      scheme: "sFastIcon",
+      scheme: "sFastIconUnitTests",
       include_bitcode: true
     )
   end
 
-  desc "Run tests for sFastIcon iOS App"
+  lane :generate_dev_ipa do
+    build_app(
+      get_certificates,           # invokes cert
+      get_provisioning_profile,   # invokes sigh
+      export_xcargs: "-allowProvisioningUpdates",
+      scheme: "sFastIconUnitTests",
+      include_bitcode: true
+    )
+  end
+
+  desc "Run unit tests for sFastIcon iOS App"
   lane :test_ios_pra do
     run_tests(
-      devices: ["iPhone X"],
+      devices: ["iPhone Pro Max"],
+      scheme: "sFastIconUnitTests"
+    )
+  end
+
+  desc "Run simulator tests for sFastIcon iOS App"
+  lane :test_ios_qe do
+    run_tests(
+      devices: ["iPhone Pro Max"],
       scheme: "sFastIconUITests"
     )
   end

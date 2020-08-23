@@ -16,16 +16,26 @@ or alternatively using `brew install fastlane`
 
 # Available Actions
 ## iOS
-### ios test_ios_qe
+### ios generate_rls_ipa
 ```
-fastlane ios test_ios_qe
+fastlane ios generate_rls_ipa
 ```
-Create beta version of sFastIcon iOS App
+Run unit tests for sFastIcon iOS App
+### ios generate_dev_ipa
+```
+fastlane ios generate_dev_ipa
+```
+
 ### ios test_ios_pra
 ```
 fastlane ios test_ios_pra
 ```
-Run tests for sFastIcon iOS App
+Run unit tests for sFastIcon iOS App
+### ios test_ios_qe
+```
+fastlane ios test_ios_qe
+```
+Run simulator tests for sFastIcon iOS App
 ### ios screenshots
 ```
 fastlane ios screenshots
