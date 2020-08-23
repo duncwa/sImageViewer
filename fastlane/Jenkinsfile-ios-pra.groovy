@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo 'Test PRA'
                 sh 'pwd'
-                sh 'bundle exec fastlane test_ios_pra'
+                sh 'bundle exec ~/.fastlane/bin/bundle/bin/fastlane test_ios_pra'
             }
         }
         stage('Inspect') {
