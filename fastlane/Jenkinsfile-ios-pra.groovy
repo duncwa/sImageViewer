@@ -7,6 +7,7 @@ pipeline {
               echo 'Install Bundle Ruby Gems'
               sh 'bundle install'
               sh 'pwd'
+              sh 'echo $PATH'
           }
       }
         stage('Build') {
