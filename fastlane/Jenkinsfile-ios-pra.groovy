@@ -20,7 +20,8 @@ pipeline {
       ghprbPullId = "${env.PULL_REQ_NUM}"
       BUILD_NUM = "${env.BUILD_ID}"
       PR_NUM = "${env.PULL_REQ_NUM}"
-      PR_URL ="https://github.com/duncwa/sImageViewer/pull/${env.PULL_REQ_NUM}"
+      PR_URL = "https://github.com/duncwa/sImageViewer/pull/${env.PULL_REQ_NUM}"
+      SLACK = "#cs-buildingblocks-jenkins"
     }
 
     stages {
@@ -55,15 +56,18 @@ pipeline {
 
       success {
         sh "echo 'Build Successful' "
+        slackSend channel: SLACK, "Build Successful - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
       }
 
       unstable {
         sh "echo 'Build Unstable' "
+        slackSend channel: SLACK, "Tests Failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
 
       }
 
       failure {
         sh "echo 'Build Failed' "
+        slackSend channel: SLACK, "Build Failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
 
       }
 
