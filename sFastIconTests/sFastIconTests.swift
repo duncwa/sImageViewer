@@ -28,7 +28,16 @@ class sFastIconTests: XCTestCase {
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
-            // Put the code you want to measure the time of here.
+        // Put the code you want to measure the time of here.
+        func countUp() {
+           DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+            // Get data from file/network/other in background
+            var arrTest = [0]
+            for index in 0...1000 {
+                arrTest.append(index)
+            }
+           }
+         }
         }
     }
     

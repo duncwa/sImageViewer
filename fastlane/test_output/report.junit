@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <testsuites name='sFastIconTests.xctest' tests='2' failures='0'>
   <testsuite name='sFastIconTests.sFastIconTests' tests='2' failures='0'>
-    <testcase classname='sFastIconTests.sFastIconTests' name='testExample' time='0.002'/>
-    <testcase classname='sFastIconTests.sFastIconTests' name='testPerformanceExample' time='0.307'/>
+    <testcase classname='sFastIconTests.sFastIconTests' name='testExample' time='0.001'/>
+    <testcase classname='sFastIconTests.sFastIconTests' name='testPerformanceExample' time='0.316'/>
   </testsuite>
 </testsuites>
