@@ -1,2 +1,37 @@
+*.DS_Store
+
+# Xcode
+*.xcuserdatad
+/sFastIcon/Reports
+
+build/
+DerivedData/
+*.pbxuser
+!default.pbxuser
+*.modelv3
+!default.modelv3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+
+# Other
+*.hmap
+*.ipa
+*.dSYM.zip
+
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+
+# Ruby
+.bundle
+.idea/*.xml
+.idea/*.iml
+.idea/inspectionProfiles
+
+# Fastlane
+fastlane/README.md
+fastlane/build/*.xcarchive
 fastlane/report.xml
 fastlane/*_output

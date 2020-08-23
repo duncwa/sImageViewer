@@ -33,7 +33,7 @@ pipeline {
               sh 'rvm list'
           }
       }
-      stage('Build') {
+      stage('Build and Test PRA') {
           steps {
               echo 'Test PRA'
               sh 'bundle exec fastlane test_ios_pra'
@@ -50,7 +50,7 @@ pipeline {
           try { unstash "test_ios_pra" }  catch (e) { echo "Failed to unstash stash: " + e.toString() }
         }
         // sh "bundle exec fastlane danger"
-        archiveArtifacts artifacts: "Fastlane*_output/**/*", fingerprint: true
+        archiveArtifacts artifacts: "Fastlane/*_output/**/*", fingerprint: true
       }
 
       success {
