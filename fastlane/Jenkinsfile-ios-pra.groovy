@@ -53,7 +53,7 @@ pipeline {
         archiveArtifacts artifacts: "Fastlane*_output/**/*", fingerprint: true
       }
 
-      sucess {
+      success {
         sh "echo 'Build Successful' "
       }
 
