@@ -8,7 +8,7 @@
 
 
 pipeline {
-    agent { any }
+    agent { "fastlane_pra" }
 
     options {
       ansiColor("xterm")
