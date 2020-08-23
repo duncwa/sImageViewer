@@ -12,25 +12,25 @@ Install _fastlane_ using
 ```
 [sudo] gem install fastlane -NV
 ```
-or alternatively using `brew cask install fastlane`
+or alternatively using `brew install fastlane`
 
 # Available Actions
 ## iOS
-### ios beta
+### ios test_ios_qe
 ```
-fastlane ios beta
+fastlane ios test_ios_qe
 ```
 Create beta version of sFastIcon iOS App
-### ios test
+### ios test_ios_pra
 ```
-fastlane ios test
+fastlane ios test_ios_pra
 ```
 Run tests for sFastIcon iOS App
 ### ios screenshots
 ```
 fastlane ios screenshots
 ```
-Generate new localized screenshots
+Generate new localized screenshots for sFastIcon
 
 ----
 

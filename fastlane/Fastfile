@@ -17,7 +17,7 @@ default_platform(:ios)
 
 platform :ios do
   desc "Create beta version of sFastIcon iOS App"
-  lane :beta do
+  lane :test_ios_qe do
     build_app(
       get_certificates,           # invokes cert
       get_provisioning_profile,   # invokes sigh
@@ -28,7 +28,7 @@ platform :ios do
   end
 
   desc "Run tests for sFastIcon iOS App"
-  lane :test do
+  lane :test_ios_pra do
     run_tests(
       devices: ["iPhone X"],
       scheme: "sFastIconUITests"
