@@ -6,7 +6,6 @@ pipeline {
           steps {
               echo 'Install Bundle Ruby Gems'
               sh 'bundle install'
-              sh 'gem install fastlane -NV'
           }
       }
         stage('Build') {
