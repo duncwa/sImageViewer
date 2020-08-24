@@ -8,7 +8,7 @@
 
 pipeline {
     agent { label "fastlane_pra" }
-    
+
     options {
       ansiColor("xterm")
       timeout(time: 1, unit: "HOURS")
@@ -16,11 +16,12 @@ pipeline {
     }
 
     environment {
+      DANGER_GITHUB_API_TOKEN =credentials("s.githubtoken")
       ghprbPullId = "${env.PULL_REQ_NUM}"
       BUILD_NUM = "${env.BUILD_ID}"
       PR_NUM = "${env.PULL_REQ_NUM}"
       PR_URL = "https://github.com/duncwa/sImageViewer/pull/${env.PULL_REQ_NUM}"
-      SLACK = "#cs-buildingblocks-jenkins"
+      SLACK = "#cs-simageviewer-jenkins"
     }
 
     stages {
@@ -50,7 +51,7 @@ pipeline {
         script {
           try { unstash "test_ios_pra" }  catch (e) { echo "Failed to unstash stash: " + e.toString() }
         }
-        // sh "bundle exec fastlane danger"
+        sh "bundle exec fastlane ios_danger"
         archiveArtifacts artifacts: "fastlane/*_output/**/*", fingerprint: true
       }
 

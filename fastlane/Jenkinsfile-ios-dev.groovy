@@ -1,5 +1,16 @@
 pipeline {
-    agent any
+  agent { label "fastlane_pra" }
+
+    options {
+      ansiColor("xterm")
+      timeout(time: 1, unit: "HOURS")
+      buildDiscarder(logRotator(numToKeepStr: "20", artifactNumToKeepStr: "20"))
+    }
+
+    environment {
+      BUILD_NUM = "${env.BUILD_ID}"
+      SLACK = "#cs-simageviewer-jenkins"
+    }
 
     stages {
       stage('Setup') {
@@ -9,6 +20,7 @@ pipeline {
               sh 'pwd'
               sh 'echo $PATH'
               sh 'rvm list'
+              sh 'printenv'
           }
       }
       stage('Build and Upload IPA') {
@@ -27,7 +39,6 @@ pipeline {
         script {
           try { unstash "generate_dev_ipa" }  catch (e) { echo "Failed to unstash stash: " + e.toString() }
         }
-        // sh "bundle exec fastlane danger"
         archiveArtifacts artifacts: "fastlane/*_output/**/*", fingerprint: true
       }
 
