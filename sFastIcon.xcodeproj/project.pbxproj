@@ -66,7 +66,7 @@
 		D54914FA1CA1C16200E1D653 /* ficon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ficon120.png; sourceTree = "<group>"; };
 		D54914FB1CA1C16200E1D653 /* ficon152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ficon152.png; sourceTree = "<group>"; };
 		D54914FC1CA1C16200E1D653 /* ficon167.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ficon167.png; sourceTree = "<group>"; };
-		D54DE32F1C8FFA8500FE2838 /* sFastIcon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sFastIcon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D54DE32F1C8FFA8500FE2838 /* FastImageViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastImageViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54DE3321C8FFA8500FE2838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D54DE3371C8FFA8500FE2838 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D54DE3391C8FFA8500FE2838 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 		D54DE3301C8FFA8500FE2838 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D54DE32F1C8FFA8500FE2838 /* sFastIcon.app */,
+				D54DE32F1C8FFA8500FE2838 /* FastImageViewer.app */,
 				A6278A581DA96BE2003CA73A /* sFastIconTests.xctest */,
 				A6278A661DA96BF8003CA73A /* sFastIconUITests.xctest */,
 			);
@@ -228,7 +228,7 @@
 			);
 			name = sFastIcon;
 			productName = sGenericAPITest;
-			productReference = D54DE32F1C8FFA8500FE2838 /* sFastIcon.app */;
+			productReference = D54DE32F1C8FFA8500FE2838 /* FastImageViewer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -245,20 +245,21 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 427JR2K8TU;
 						LastSwiftMigration = 0920;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						TestTargetID = D54DE32E1C8FFA8500FE2838;
 					};
 					A6278A651DA96BF8003CA73A = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 427JR2K8TU;
 						LastSwiftMigration = 1160;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						TestTargetID = D54DE32E1C8FFA8500FE2838;
 					};
 					D54DE32E1C8FFA8500FE2838 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 427JR2K8TU;
+						DevelopmentTeam = HN3MSBG9DP;
 						LastSwiftMigration = 1160;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -494,10 +495,12 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development: Duncan Wallace (PFM47V3C3G)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Duncan Wallace (PFM47V3C3G)";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = HN3MSBG9DP;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -552,10 +555,12 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = HN3MSBG9DP;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -579,12 +584,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 427JR2K8TU;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = HN3MSBG9DP;
 				INFOPLIST_FILE = "$(SRCROOT)/sFastIcon/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw4workonly.sfasticon;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw4workonly.fastimage;
+				PRODUCT_NAME = FastImageViewer;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 			};
@@ -594,12 +601,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 35CW3L3U5Z;
+				CODE_SIGN_IDENTITY = "Apple Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = HN3MSBG9DP;
 				INFOPLIST_FILE = "$(SRCROOT)/sFastIcon/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dw4workonly.sfasticon;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dw4workonly.fastimage;
+				PRODUCT_NAME = FastImageViewer;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
