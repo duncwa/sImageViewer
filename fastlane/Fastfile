@@ -37,7 +37,7 @@ platform :ios do
   desc "Run unit tests for sFastIcon iOS App"
   lane :test_ios_pra do
     run_tests(
-      devices: ["iPhone Pro Max"],
+      devices: ["iPhone 8"],
       scheme: "sFastIconUnitTests"
     )
   end
@@ -45,7 +45,7 @@ platform :ios do
   desc "Run simulator tests for sFastIcon iOS App"
   lane :test_ios_qe do
     run_tests(
-      devices: ["iPhone Pro Max"],
+      devices: ["iPhone 8"],
       scheme: "sFastIconUITests"
     )
   end
@@ -53,7 +53,7 @@ platform :ios do
   desc "Generate new localized screenshots for sFastIcon"
   lane :screenshots do
     capture_screenshots(
-      devices: ["iPhone X"],
+      devices: ["iPhone 8"],
       scheme: "sFastIconUITests"
     )
   end

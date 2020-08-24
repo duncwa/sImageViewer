@@ -41,6 +41,11 @@ Run simulator tests for sFastIcon iOS App
 fastlane ios screenshots
 ```
 Generate new localized screenshots for sFastIcon
+### ios ios_danger
+```
+fastlane ios ios_danger
+```
+Run Danger for PRA Commit to Repo Comments
 
 ----
 
