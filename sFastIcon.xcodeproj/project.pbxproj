@@ -257,7 +257,7 @@
 					};
 					D54DE32E1C8FFA8500FE2838 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = HN3MSBG9DP;
+						DevelopmentTeam = 427JR2K8TU;
 						LastSwiftMigration = 1160;
 					};
 				};
@@ -580,7 +580,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = HN3MSBG9DP;
+				DEVELOPMENT_TEAM = 427JR2K8TU;
 				INFOPLIST_FILE = "$(SRCROOT)/sFastIcon/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dw4workonly.sfasticon;
@@ -595,7 +595,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = HN3MSBG9DP;
+				DEVELOPMENT_TEAM = 35CW3L3U5Z;
 				INFOPLIST_FILE = "$(SRCROOT)/sFastIcon/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dw4workonly.sfasticon;

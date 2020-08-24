@@ -9,14 +9,14 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A6278A651DA96BF8003CA73A"
-               BuildableName = "sFastIconUITests.xctest"
-               BlueprintName = "sFastIconUITests"
+               BlueprintIdentifier = "D54DE32E1C8FFA8500FE2838"
+               BuildableName = "sFastIcon.app"
+               BlueprintName = "sFastIcon"
                ReferencedContainer = "container:sFastIcon.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,15 +50,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A6278A651DA96BF8003CA73A"
-            BuildableName = "sFastIconUITests.xctest"
-            BlueprintName = "sFastIconUITests"
-            ReferencedContainer = "container:sFastIcon.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -69,9 +60,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A6278A651DA96BF8003CA73A"
-            BuildableName = "sFastIconUITests.xctest"
-            BlueprintName = "sFastIconUITests"
+            BlueprintIdentifier = "D54DE32E1C8FFA8500FE2838"
+            BuildableName = "sFastIcon.app"
+            BlueprintName = "sFastIcon"
             ReferencedContainer = "container:sFastIcon.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
