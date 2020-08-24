@@ -1,17 +1,10 @@
-# This file contains the fastlane.tools configuration
-# You can find the documentation at https://docs.fastlane.tools
+#!/usr/bin/env groovy
 #
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
-#
+#   Fastfile
+#   sImageViewer
+#   Created by Duncan Wallace 08/21/2020
+#   Copyright © 2020. Duncwa LLC.  All rights reserved
 
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
 
 default_platform(:ios)
 
@@ -22,7 +15,7 @@ platform :ios do
       get_certificates,           # invokes cert
       get_provisioning_profile,   # invokes sigh
       export_xcargs: "-allowProvisioningUpdates",
-      scheme: "sFastIconUnitTests",
+      scheme: "sFastIcon",
       include_bitcode: true
     )
   end
