@@ -12,7 +12,7 @@ pipeline {
     options {
       ansiColor("xterm")
       timeout(time: 1, unit: "HOURS")
-      buildDiscarder(logRotator(numToKeepStr: "20", artifactNumToKeepStr: "20"))
+      buildDiscarder(logRotator(numToKeepStr: "5", artifactNumToKeepStr: "5"))
     }
 
     environment {
@@ -48,6 +48,8 @@ pipeline {
           try { unstash "run_ios_ins" }  catch (e) { echo "Failed to unstash stash: " + e.toString() }
         }
         archiveArtifacts artifacts: "fastlane/*_output/**/*", fingerprint: true
+        archiveArtifacts artifacts: "*dSYM.zip", fingerprint: true
+        archiveArtifacts artifacts: "*.ipa", fingerprint: true
       }
 
       success {
