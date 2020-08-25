@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D54DE32E1C8FFA8500FE2838"
-               BuildableName = "sFastIcon.app"
+               BuildableName = "FastImageViewer.app"
                BlueprintName = "sFastIcon"
                ReferencedContainer = "container:sFastIcon.xcodeproj">
             </BuildableReference>
@@ -61,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D54DE32E1C8FFA8500FE2838"
-            BuildableName = "sFastIcon.app"
+            BuildableName = "FastImageViewer.app"
             BlueprintName = "sFastIcon"
             ReferencedContainer = "container:sFastIcon.xcodeproj">
          </BuildableReference>
