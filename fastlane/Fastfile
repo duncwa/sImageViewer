@@ -22,7 +22,8 @@ platform :ios do
           "com.dw4workonly.fastimage" => "DIS_SwiftImageViewer"
         }
       },
-      include_bitcode: true
+      include_bitcode: true,
+      include_symbols: true
     )
   end
 
@@ -38,7 +39,9 @@ platform :ios do
           "com.dw4workonly.fastimage" => "DEV_SwiftImageViewer"
         }
       },
-      include_bitcode: false
+      include_bitcode: false,
+      include_symbols: true
+
     )
   end
 
@@ -73,7 +76,7 @@ platform :ios do
       },
       include_bitcode: false
     )
-    ## Call inspection bulkextractor on *.ipa file 
+    ## Call inspection bulkextractor on *.ipa file
     sh 'echo "Running Bulkextractor inspection"'
   end
 
