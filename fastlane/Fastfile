@@ -14,7 +14,6 @@ platform :ios do
     build_app(
       get_certificates,           # invokes cert
       get_provisioning_profile,   # invokes sigh
-      export_xcargs: "-allowProvisioningUpdates",
       scheme: "sFastIcon",
       include_bitcode: true
     )
