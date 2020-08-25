@@ -1,5 +1,5 @@
 pipeline {
-  agent { label "fastlane_pra" }
+  agent { label "fastlane_dev" }
 
     options {
       ansiColor("xterm")

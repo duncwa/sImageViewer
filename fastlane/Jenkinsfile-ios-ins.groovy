@@ -7,7 +7,7 @@
 //  Copyright © 2020. Duncwa LLC.  All rights reserved
 
 pipeline {
-    agent { label "fastlane_pra" }
+    agent { label "fastlane_ins" }
 
     options {
       ansiColor("xterm")
