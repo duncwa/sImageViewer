@@ -1,5 +1,28 @@
+#!/usr/bin/env groovy
+
+//
+//  Jenkinsfile-ios-qe.groovy
+//  sImageViewer
+//  Created by Duncan Wallace 08/21/2020
+//  Copyright © 2020. Duncwa LLC.  All rights reserved
+
 pipeline {
-    agent any
+    agent { label "fastlane_pra" }
+
+    options {
+      ansiColor("xterm")
+      timeout(time: 1, unit: "HOURS")
+      buildDiscarder(logRotator(numToKeepStr: "20", artifactNumToKeepStr: "20"))
+    }
+
+    environment {
+      DANGER_GITHUB_API_TOKEN =credentials("s.githubtoken")
+      ghprbPullId = "${env.PULL_REQ_NUM}"
+      BUILD_NUM = "${env.BUILD_ID}"
+      PR_NUM = "${env.PULL_REQ_NUM}"
+      PR_URL = "https://github.com/duncwa/sImageViewer/pull/${env.PULL_REQ_NUM}"
+      SLACK = "#cs-simageviewer-jenkins"
+    }
 
     stages {
       stage('Setup') {
@@ -9,28 +32,44 @@ pipeline {
               sh 'pwd'
               sh 'echo $PATH'
               sh 'rvm list'
+              sh 'printenv'
           }
       }
-        stage('Build') {
-            steps {
-                echo 'Test PRA'
-                sh 'bundle exec fastlane test_ios_pra'
-            }
+      stage('Build and Test QE') {
+          steps {
+              echo 'Test QE'
+              sh 'bundle exec fastlane test_ios_qe'
+          }
+          post {
+            always { stash includes: "fastlane/*_output/**/*", name: "test_ios_qe", allowEmpty: true }
+          }
+      }
+    }
+
+    post {
+      always {
+        script {
+          try { unstash "test_ios_qe" }  catch (e) { echo "Failed to unstash stash: " + e.toString() }
         }
-        stage('Inspect') {
-            steps {
-                echo 'Inspecting..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+        archiveArtifacts artifacts: "fastlane/*_output/**/*", fingerprint: true
+      }
+
+      success {
+        sh "echo 'Build Successful' "
+        slackSend channel: SLACK, message: "Build Successful - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
+      }
+
+      unstable {
+        sh "echo 'Build Unstable' "
+        slackSend channel: SLACK,  message: "Tests Failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
+
+      }
+
+      failure {
+        sh "echo 'Build Failed' "
+        slackSend channel: SLACK,  message: "Build Failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
+
+      }
+
     }
 }
