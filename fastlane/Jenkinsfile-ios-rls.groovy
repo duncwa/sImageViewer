@@ -48,7 +48,7 @@ pipeline {
           try { unstash "generate_rls_ipa" }  catch (e) { echo "Failed to unstash stash: " + e.toString() }
         }
         archiveArtifacts artifacts: "fastlane/*_output/**/*", fingerprint: true
-        archiveArtifacts artifacts: "*dSYM.zip", fingerprint: true
+        //archiveArtifacts artifacts: "*dSYM.zip", fingerprint: true
         archiveArtifacts artifacts: "*.ipa", fingerprint: true
       }
 
