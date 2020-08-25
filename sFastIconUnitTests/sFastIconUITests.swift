@@ -8,7 +8,7 @@
 
 import XCTest
 
-class sFastIconTests: XCTestCase {
+class sFastIconUnitTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

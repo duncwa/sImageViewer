@@ -7,7 +7,7 @@
 		<key>sFastIcon.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 		<key>sFastIconUITests.xcscheme_^#shared#^_</key>
 		<dict>
@@ -17,7 +17,25 @@
 		<key>sFastIconUnitTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>A6278A571DA96BE2003CA73A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D54DE32E1C8FFA8500FE2838</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EB44B47E24F4BD7000934DFC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

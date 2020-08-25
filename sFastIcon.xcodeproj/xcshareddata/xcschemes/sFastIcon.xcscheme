@@ -37,6 +37,16 @@
          </BuildableReference>
       </MacroExpansion>
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "EB44B47E24F4BD7000934DFC"
+               BuildableName = "sFastIconUnitTests.xctest"
+               BlueprintName = "sFastIconUnitTests"
+               ReferencedContainer = "container:sFastIcon.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

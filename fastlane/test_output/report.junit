@@ -1,8 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<testsuites name='sFastIconUITests.xctest' tests='1' failures='1'>
-  <testsuite name='sFastIconUITests.sFastIconUITests' tests='1' failures='1'>
-    <testcase classname='sFastIconUITests.sFastIconUITests' name='testExample'>
-      <failure message='Failed to get matching snapshots: Lost connection to the application (pid 5263).'>sFastIconUITests.swift:38</failure>
-    </testcase>
+<testsuites name='sFastIconUnitTests.xctest' tests='2' failures='0'>
+  <testsuite name='sFastIconUnitTests.sFastIconUnitTests' tests='2' failures='0'>
+    <testcase classname='sFastIconUnitTests.sFastIconUnitTests' name='testExample' time='0.001'/>
+    <testcase classname='sFastIconUnitTests.sFastIconUnitTests' name='testPerformanceExample' time='0.314'/>
   </testsuite>
 </testsuites>

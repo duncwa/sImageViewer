@@ -144,8 +144,10 @@ class MainTableViewController: UITableViewController, NSCopying {
         } catch {
           print("Error with Json: \(error)")
         }
+        DispatchQueue.main.async(execute: { () -> Void in
           self.tableView.reloadData()
           print("2 of 3 - self.tableView.reloadData [main queue asynchronously]")
+        })
       }
     
     }
