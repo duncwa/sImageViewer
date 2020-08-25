@@ -12,18 +12,34 @@ platform :ios do
   desc "Run unit tests for sFastIcon iOS App"
   lane :generate_rls_ipa do
     build_app(
-      get_certificates,           # invokes cert
-      get_provisioning_profile,   # invokes sigh
+      codesigning_identity: "Apple Distribution",
+      clean: true,
       scheme: "sFastIcon",
+      configuration: "Release",
+      export_options: {
+        method: "app-store",
+        provisioningProfiles: {
+          "com.dw4workonly.fastimage" => "DIS_SwiftImageViewer"
+        }
+      },
       include_bitcode: true
     )
   end
 
   lane :generate_dev_ipa do
-    build_app(
-      scheme: "sFastIcon",
-      include_bitcode: true
-    )
+  build_app(
+    codesigning_identity: "Apple Development",
+    clean: true,
+    scheme: "sFastIcon",
+    configuration: "Debug",
+    export_options: {
+      method: "development",
+      provisioningProfiles: {
+        "com.dw4workonly.fastimage" => "DEV_SwiftImageViewer"
+      }
+    },
+    include_bitcode: false
+  )
   end
 
   desc "Run unit tests for sFastIcon iOS App"
