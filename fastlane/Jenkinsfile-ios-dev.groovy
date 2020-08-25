@@ -1,3 +1,11 @@
+#!/usr/bin/env groovy
+
+//
+//  Jenkinsfile-ios-dev.groovy
+//  sImageViewer
+//  Created by Duncan Wallace 08/21/2020
+//  Copyright © 2020. Duncwa LLC.  All rights reserved
+
 pipeline {
   agent { label "fastlane_dev" }
 

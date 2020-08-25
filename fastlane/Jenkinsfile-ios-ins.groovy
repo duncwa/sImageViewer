@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
 //
-//  Jenkinsfile-ios-qe.groovy
+//  Jenkinsfile-ios-ins.groovy
 //  sImageViewer
 //  Created by Duncan Wallace 08/21/2020
 //  Copyright © 2020. Duncwa LLC.  All rights reserved
