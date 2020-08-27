@@ -46,6 +46,10 @@ GEM
       no_proxy_fix
       octokit (~> 4.7)
       terminal-table (~> 1)
+    danger-plugin-api (1.0.0)
+      danger (> 2.0)
+    danger-xcode_summary (0.5.2)
+      danger-plugin-api (~> 1.0)
     declarative (0.0.20)
     declarative-option (0.1.0)
     digest-crc (0.6.1)
@@ -211,6 +215,7 @@ PLATFORMS
 
 DEPENDENCIES
   danger
+  danger-xcode_summary
   fastlane
 
 BUNDLED WITH
