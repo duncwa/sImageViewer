@@ -26,23 +26,23 @@ pipeline {
 
     stages {
       stage('Setup') {
-          steps {
-              echo 'Install Bundle Ruby Gems'
-              sh 'bundle install'
-              sh 'pwd'
-              sh 'echo $PATH'
-              sh 'rvm list'
-              sh 'printenv'
-          }
+        steps {
+          echo 'Install Bundle Ruby Gems'
+          sh 'bundle install'
+          sh 'pwd'
+          sh 'echo $PATH'
+          sh 'rvm list'
+          sh 'printenv'
+        }
       }
       stage('Build and Test QE') {
-          steps {
-              echo 'Test QE'
-              sh 'bundle exec fastlane test_ios_qe'
-          }
-          post {
-            always { stash includes: "fastlane/*_output/**/*", name: "test_ios_qe", allowEmpty: true }
-          }
+        steps {
+          echo 'Test QE'
+          sh 'bundle exec fastlane test_ios_qe'
+        }
+        post {
+          always { stash includes: "fastlane/*_output/**/*", name: "test_ios_qe", allowEmpty: true }
+        }
       }
     }
 
