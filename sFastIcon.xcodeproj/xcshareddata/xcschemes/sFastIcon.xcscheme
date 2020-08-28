@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D54DE32E1C8FFA8500FE2838"
-               BuildableName = "sFastIcon.app"
+               BuildableName = "FastImageViewer.app"
                BlueprintName = "sFastIcon"
                ReferencedContainer = "container:sFastIcon.xcodeproj">
             </BuildableReference>
@@ -27,39 +27,27 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "D54DE32E1C8FFA8500FE2838"
+            BuildableName = "FastImageViewer.app"
+            BlueprintName = "sFastIcon"
+            ReferencedContainer = "container:sFastIcon.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A6278A651DA96BF8003CA73A"
-               BuildableName = "sFastIconUITests.xctest"
-               BlueprintName = "sFastIconUITests"
-               ReferencedContainer = "container:sFastIcon.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A6278A571DA96BE2003CA73A"
-               BuildableName = "sFastIconTests.xctest"
-               BlueprintName = "sFastIconTests"
+               BlueprintIdentifier = "EB44B47E24F4BD7000934DFC"
+               BuildableName = "sFastIconUnitTests.xctest"
+               BlueprintName = "sFastIconUnitTests"
                ReferencedContainer = "container:sFastIcon.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D54DE32E1C8FFA8500FE2838"
-            BuildableName = "sFastIcon.app"
-            BlueprintName = "sFastIcon"
-            ReferencedContainer = "container:sFastIcon.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -76,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D54DE32E1C8FFA8500FE2838"
-            BuildableName = "sFastIcon.app"
+            BuildableName = "FastImageViewer.app"
             BlueprintName = "sFastIcon"
             ReferencedContainer = "container:sFastIcon.xcodeproj">
          </BuildableReference>
@@ -88,8 +76,6 @@
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -102,7 +88,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D54DE32E1C8FFA8500FE2838"
-            BuildableName = "sFastIcon.app"
+            BuildableName = "FastImageViewer.app"
             BlueprintName = "sFastIcon"
             ReferencedContainer = "container:sFastIcon.xcodeproj">
          </BuildableReference>

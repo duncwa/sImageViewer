@@ -11,38 +11,31 @@ import XCTest
 
 class sFastIconUITests: XCTestCase {
   
-  private var app: XCUIApplication {
-    return XCUIApplication()
-  }
-  
-  override func setUp() {
-      super.setUp()
-      continueAfterFailure = false
-  }
-  
-  override func tearDown() {
-      super.tearDown()
-  }
-    
-    func testExample() {
-      app.launch()
+    private var app: XCUIApplication {
+        return XCUIApplication()
+    }
       
-      //let firstItem = self.app.staticTexts["accusamus beatae ad facilis cum similique qui sunt"]
-      //let firstItem = self.app.staticTexts["accusam..."]
-      let firstItem = self.app.staticTexts["0"]
-
-
-      let exists = NSPredicate(format: "exists == true")
-      expectation(for: exists, evaluatedWith: firstItem, handler: nil)
+    override func setUp() {
+        super.setUp()
+        continueAfterFailure = false
+    }
       
-      waitForExpectations(timeout: 15, handler: nil)
-      XCTAssertTrue(app.isDisplayingMainView)
-      snapshot("Launch sFastIcon Display")
-      
-      XCTAssertTrue(app.isDisplayingPhotoCount)
-      snapshot("PhotoCount sFastIcon Display")
+    override func tearDown() {
+        super.tearDown()
     }
     
+    func testTableView() {
+        app.launch()
+        let table = app.tables.element
+        let exists = NSPredicate(format: "exists == true")
+        expectation(for: exists, evaluatedWith: table, handler: nil)
+        XCTAssertTrue(table.exists)
+        waitForExpectations(timeout: 15, handler: nil)
+        let cell = table.cells.element(boundBy: 2)
+        XCTAssertTrue(cell.exists)
+        let indexedText = cell.staticTexts.element
+        XCTAssertTrue(indexedText.exists)
+    }
 }
 
 // MARK: - Accessibility elements testing

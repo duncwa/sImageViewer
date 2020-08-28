@@ -1,45 +1,105 @@
-# This file contains the fastlane.tools configuration
-# You can find the documentation at https://docs.fastlane.tools
+#!/usr/bin/env groovy
 #
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
-#
+#   Fastfile
+#   sImageViewer
+#   Created by Duncan Wallace 08/21/2020
+#   Copyright © 2020. Duncwa LLC.  All rights reserved
 
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
 
 default_platform(:ios)
 
 platform :ios do
-  desc "Create beta version of sFastIcon iOS App"
-  lane :beta do
+  desc "Run unit tests for sFastIcon iOS App"
+  lane :generate_rls_ipa do
     build_app(
-      get_certificates,           # invokes cert
-      get_provisioning_profile,   # invokes sigh
-      export_xcargs: "-allowProvisioningUpdates",
+      codesigning_identity: "Apple Distribution",
+      clean: true,
       scheme: "sFastIcon",
-      include_bitcode: true
+      configuration: "Release",
+      export_options: {
+        method: "app-store",
+        provisioningProfiles: {
+          "com.dw4workonly.fastimage" => "DIS_SwiftImageViewer"
+        }
+      },
+      include_bitcode: true,
+      include_symbols: true
     )
   end
 
-  desc "Run tests for sFastIcon iOS App"
-  lane :test do
-    run_tests(
-      devices: ["iPhone X"],
-      scheme: "sFastIconUITests"
+  lane :generate_dev_ipa do
+    build_app(
+      codesigning_identity: "Apple Development",
+      clean: true,
+      scheme: "sFastIcon",
+      configuration: "Debug",
+      export_options: {
+        method: "development",
+        provisioningProfiles: {
+          "com.dw4workonly.fastimage" => "DEV_SwiftImageViewer"
+        }
+      },
+      include_bitcode: false,
+      include_symbols: true
+
     )
   end
+
+  desc "Run unit tests for sFastIcon iOS App"
+  lane :test_ios_pra do
+    run_tests(
+      devices: ["iPhone 8"],
+      scheme: "sFastIconUnitTests"
+    )
+  end
+
+  desc "Run simulator tests for sFastIcon iOS App"
+  lane :test_ios_qe do
+    run_tests(
+      device: "iPhone 8",
+      scheme: "sFastIconUITests",
+      code_coverage: true,
+      output_directory: "fastlane/test_ouput",
+      formatter: "xcpretty-json-formatter"
+    )
+  end
+
+  desc "Run simulator tests for sFastIcon iOS App"
+  lane :run_ios_ins do
+    build_app(
+      codesigning_identity: "Apple Development",
+      clean: true,
+      scheme: "sFastIcon",
+      configuration: "Debug",
+      export_options: {
+        method: "development",
+        provisioningProfiles: {
+          "com.dw4workonly.fastimage" => "DEV_SwiftImageViewer"
+        }
+      },
+      include_bitcode: false
+    )
+    ## Call inspection bulkextractor on *.ipa file
+    sh 'echo "Running Bulkextractor inspection"'
+  end
+
 
   desc "Generate new localized screenshots for sFastIcon"
   lane :screenshots do
     capture_screenshots(
-      devices: ["iPhone X"],
+      devices: ["iPhone 8"],
       scheme: "sFastIconUITests"
+    )
+  end
+
+  desc "Run Danger for PRA Commit to Repo Comments"
+  lane :ios_danger do
+    danger(
+      use_bundle_exec: true,
+      verbose: true,
+      danger_id: "sfasticon_ios_dangerfile",
+      new_comment: false,
+      dangerfile: "fastlane/ios_dangerfile"
     )
   end
 end

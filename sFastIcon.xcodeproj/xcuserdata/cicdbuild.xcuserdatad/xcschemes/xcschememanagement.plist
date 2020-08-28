@@ -7,9 +7,14 @@
 		<key>sFastIcon.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<key>sFastIconUITests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>sFastIconUnitTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>2</integer>
@@ -22,27 +27,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A6278A651DA96BF8003CA73A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>D54DE32E1C8FFA8500FE2838</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D54DE3421C8FFA8500FE2838</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D54DE34D1C8FFA8500FE2838</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D5BF9CF92225B80C00851E50</key>
+		<key>EB44B47E24F4BD7000934DFC</key>
 		<dict>
 			<key>primary</key>
 			<true/>

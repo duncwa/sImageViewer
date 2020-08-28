@@ -4,7 +4,7 @@
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
-      buildImplicitDependencies = "NO">
+      buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A6278A651DA96BF8003CA73A"
-               BuildableName = "sFastIconUITests.xctest"
-               BlueprintName = "sFastIconUITests"
+               BlueprintIdentifier = "EB44B47E24F4BD7000934DFC"
+               BuildableName = "sFastIconUnitTests.xctest"
+               BlueprintName = "sFastIconUnitTests"
                ReferencedContainer = "container:sFastIcon.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -50,16 +50,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D54DE32E1C8FFA8500FE2838"
-            BuildableName = "FastImageViewer.app"
-            BlueprintName = "sFastIcon"
-            ReferencedContainer = "container:sFastIcon.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
