@@ -21,11 +21,11 @@ pipeline {
     DANGER_GITHUB_API_TOKEN_USR = "${env.DANGER_GITHUB_CREDS_USR}"
     DANGER_GITHUB_API_TOKEN_PSW = "${env.DANGER_GITHUB_CREDS_PSW}"
     ghprbPullId = "${env.PULL_REQ_NUM}"
-    CHANGE_ID = "${env.PULL_REQ_NUM}"
+    // CHANGE_ID = "${env.PULL_REQ_NUM}"
     BUILD_NUM = "${env.BUILD_ID}"
     PR_NUM = "${env.PULL_REQ_NUM}"
-    PR_URL = "https://github.com/repos/duncwa/sImageViewer/pulls/${env.PULL_REQ_NUM}"
-    GIT_URL_1 = "https://github.com/repos/duncwa/sImageViewer/pulls/${env.PULL_REQ_NUM}"
+    PR_URL = "https://github.com/duncwa/sImageViewer/pull/${env.PULL_REQ_NUM}"
+    GIT_URL_1 = "https://github.com/duncwa/sImageViewer/pull/${env.PULL_REQ_NUM}"
     SLACK = "#cs-simageviewer-jenkins"
   }
 
