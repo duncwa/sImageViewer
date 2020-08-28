@@ -56,8 +56,11 @@ platform :ios do
   desc "Run simulator tests for sFastIcon iOS App"
   lane :test_ios_qe do
     run_tests(
-      devices: ["iPhone 8"],
-      scheme: "sFastIconUITests"
+      device: "iPhone 8",
+      scheme: "sFastIconUITests",
+      code_coverage: true,
+      output_directory: "fastlane/test_ouput",
+      formatter: "xcpretty-json-formatter"
     )
   end
 
