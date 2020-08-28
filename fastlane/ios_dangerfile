@@ -17,7 +17,7 @@ test_results = 'fastlane/test_output/report.html'
 
 # message << result_errors
 message << test_results
-puts("Test results are: " + $PWD/ + "fastlane/report.html")
+message << "Test results output should be above this comment.")
 # Don't let testing shortcuts get into master by accident
 fail("fdescribe left in tests") if `grep -r fdescribe specs/ `.length > 1
 fail("fit left in tests") if `grep -r fit specs/ `.length > 1
