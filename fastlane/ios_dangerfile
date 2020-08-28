@@ -15,12 +15,13 @@ warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
 
 test_results = 'fastlane/test_output/report.html'
 
-# message << pr_title
-# message << pr_link
-# message << base_commit
-# message << head_commit
+message << declared_trivial
+message << github.pr_link
+message << github.base_commit
+message << github.head_commit
 message << test_results
 message << "Test results output should be above this comment."
 # Don't let testing shortcuts get into master by accident
 fail("fdescribe left in tests") if `grep -r fdescribe specs/ `.length > 1
 fail("fit left in tests") if `grep -r fit specs/ `.length > 1
+markdown << message
