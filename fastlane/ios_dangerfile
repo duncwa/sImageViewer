@@ -8,11 +8,11 @@ warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
 # Warn when there is a big PR
 # warn("Big PR") if git.lines_of_code > 500
 
-xcode_summary.report 'fastlane/test_output/report.junit'
+# xcode_summary.report 'fastlane/test_output/report.junit'
 xcode_test_result.report 'fastlane/test_output/report.html'
-result_errors = xcode_summary.warning_error_count
+# result_errors = xcode_summary.warning_error_count
 result_tests = xcode_test_result
-message << result_errors
+# message << result_errors
 message << restul_tests
 # Don't let testing shortcuts get into master by accident
 fail("fdescribe left in tests") if `grep -r fdescribe specs/ `.length > 1
