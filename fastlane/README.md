@@ -36,6 +36,11 @@ Run unit tests for sFastIcon iOS App
 fastlane ios test_ios_qe
 ```
 Run simulator tests for sFastIcon iOS App
+### ios run_ios_ins
+```
+fastlane ios run_ios_ins
+```
+Run simulator tests for sFastIcon iOS App
 ### ios screenshots
 ```
 fastlane ios screenshots
