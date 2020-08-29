@@ -1,5 +1,4 @@
 #!/usr/bin/env groovy
-
 //
 //  Jenkinsfile-ios-pra.groovy
 //  sImageViewer
