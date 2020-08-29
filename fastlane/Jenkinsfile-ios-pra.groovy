@@ -15,10 +15,12 @@ pipeline {
   }
 
   environment {
-    //DANGER_GITHUB_API_TOKEN = credentials("s.githubtoken")
-    DANGER_GITHUB_CREDS_USR = credentials("s.githubtokentwo")
-    DANGER_GITHUB_API_TOKEN_USR = "${env.DANGER_GITHUB_CREDS_USR}"
-    DANGER_GITHUB_API_TOKEN_PSW = "${env.DANGER_GITHUB_CREDS_PSW}"
+    DANGER_GITHUB_API_TOKEN = credentials("s.githubtoken")
+    DANGER_GITHUB_HOST = "https://github.com/duncwa/sImageViewer"
+    DANGER_GITHUB_API_BASE_URL = "https://github.com/duncwa/sImageViewer"
+    // DANGER_GITHUB_CREDS_USR = credentials("s.githubtokentwo")
+    // DANGER_GITHUB_API_TOKEN_USR = "${env.DANGER_GITHUB_CREDS_USR}"
+    // DANGER_GITHUB_API_TOKEN_PSW = "${env.DANGER_GITHUB_CREDS_PSW}"
     ghprbPullId = "${env.PULL_REQ_NUM}"
     CHANGE_ID = "${env.PULL_REQ_NUM}"
     BUILD_NUM = "${env.BUILD_ID}"
