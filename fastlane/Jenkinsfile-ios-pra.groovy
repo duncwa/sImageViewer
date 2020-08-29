@@ -36,6 +36,7 @@ pipeline {
         sh 'pwd'
         sh 'echo $PATH'
         sh 'rvm list'
+        sh 'echo $PULL_REQ_NUM'
         sh 'printenv'
       }
     }
