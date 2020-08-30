@@ -97,12 +97,13 @@ platform :ios do
 
   desc "Run Danger for PRA Commit to Repo Comments"
   lane :ios_danger do
-    danger(
-      use_bundle_exec: true,
-      verbose: true,
-      danger_id: "sfasticon_ios_dangerfile",
-      new_comment: false,
-      dangerfile: "fastlane/ios_dangerfile"
-    )
+    sh 'bundle exec danger pr https://github.com/duncwa/sImageViewer/pull/2 --dangerfile=fastlane/ios_dangerfile'
+    # danger(
+    #   use_bundle_exec: true,
+    #   verbose: true,
+    #   danger_id: "sfasticon_ios_dangerfile",
+    #   new_comment: false,
+    #   dangerfile: "fastlane/ios_dangerfile"
+    # )
   end
 end
