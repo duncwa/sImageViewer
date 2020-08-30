@@ -15,7 +15,7 @@ pipeline {
   }
 
   environment {
-    //DANGER_GITHUB_API_TOKEN = credentials("s.githubtoken")
+    DANGER_GITHUB_API_TOKEN = credentials("s.githubtokentwo")
     // DANGER_GITHUB_HOST = "https://github.com/duncwa/sImageViewer"
     // DANGER_GITHUB_API_BASE_URL = "https://github.com/duncwa/sImageViewer"
     DANGER_GITHUB_CREDS_USR = credentials("s.githubtokentwo")
