@@ -1,5 +1,5 @@
-# BUILD_URL = ENV['build_url']
-# BUILD_ID = ENV['build_id']
+BUILD_URL = ENV['build_url']
+BUILD_ID = ENV['build_id']
 
 # Sometimes it's a README fix, or something like that - which isn't relevant for
 # including in a project's CHANGELOG for example
