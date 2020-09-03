@@ -15,6 +15,7 @@ pipeline {
       buildDiscarder(logRotator(numToKeepStr: "5", artifactNumToKeepStr: "5"))
     }
 
+
     environment {
       BUILD_NUM = "${env.BUILD_ID}"
       SLACK = "#cs-simageviewer-jenkins"
