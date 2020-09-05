@@ -11,7 +11,7 @@ pipeline {
   options {
     ansiColor("xterm")
     timeout(time: 1, unit: "HOURS")
-    buildDiscarder(logRotator(numToKeepStr: "20", artifactNumToKeepStr: "20"))
+    buildDiscarder(logRotator(numToKeepStr: "10", artifactNumToKeepStr: "5"))
   }
 
   environment {
