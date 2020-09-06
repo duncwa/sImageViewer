@@ -4,7 +4,6 @@ build_id = ENV['BUILD_ID']
 
 warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
 message << github.pr_title
-message << github.pr_description
 message << github.pr_body
 message << github.pr_author
 message << build_id
