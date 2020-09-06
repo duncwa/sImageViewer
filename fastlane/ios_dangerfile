@@ -1,18 +1,19 @@
 require "danger"
-build_url = ENV['BUILD_URL']
-build_id = ENV['BUILD_ID']
 
+build_id = ENV['BUILD_ID']
+build_url = ENV['BUILD_URL']
 
 message("This is a Pull Request run from ios_dangerfile.")
-message(ENV['BUILD_ID'] ENV['BUILD_URL'])
+message ENV['BUILD_ID']
+message ENV['BUILD_URL']
 
 warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
-message << github.pr_title
-message << github.pr_body
-message << github.pr_author
-message << build_id
-message << build_url
-message(ENV['BUILD_URL'] + "/artifact/fastlane/test_output/report.html")
+message(github.pr_title)
+message(github.pr_body)
+message(github.pr_author)
+message(build_id)
+message(build_url)
+message ENV['BUILD_URL'] + "/artifact/fastlane/test_output/report.html"
 
 message << "fastlane/test_output/report.junit"
 message = "\n---\n\n"
