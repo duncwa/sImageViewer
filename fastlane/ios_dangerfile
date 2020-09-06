@@ -4,7 +4,7 @@ build_id = ENV['BUILD_ID']
 
 
 message("This is a Pull Request run from ios_dangerfile.")
-message(" \${build_id} \${build_url} ")
+message(" ${build_id} ${build_url} ")
 
 warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
 message << github.pr_title
@@ -12,7 +12,10 @@ message << github.pr_body
 message << github.pr_author
 message << build_id
 message << build_url
-message << "fastlane/test_output/report.html"
+message("${build_url}/artifact/fastlane/test_output/report.html")
+http://mobileci-prod.local:8080/job/Consumer/job/ImageViewer/job/ImageViewerios/job/PRA/job/IMG-IOS-PRA/150/artifact/fastlane/test_output/report.htm
+http://mobileci-prod.local:8080/job/Consumer/job/ImageViewer/job/ImageViewerios/job/PRA/job/IMG-IOS-PRA/150/display/redirect?page=artifacts
+
 message << "fastlane/test_output/report.junit"
 message = "\n---\n\n"
 
