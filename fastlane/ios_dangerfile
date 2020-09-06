@@ -1,19 +1,20 @@
-# Sometimes it's a README fix, or something like that - which isn't relevant for
-# including in a project's CHANGELOG for example
-declared_trivial = github.pr_title.include? "SwiftImageViewer PR Analysis"
+require "danger"
 
-# Make it more obvious that a PR is a work in progress and shouldn't be merged yet
+build_id = ENV['BUILD_ID']
+build_url = ENV['BUILD_URL']
+
+message "This is a Pull Request run from fastlane/ios_dangerfile."
+message "Build Number: " + build_id
+message "Build Url: " + ENV['BUILD_URL']
+
 warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
+message "Pull Request Title: " + github.pr_title
+message "Pull Request Body: " + github.pr_body
+message "Pull Request Author: " + github.pr_author
+message "Pull Request Number: " + ENV['PULL_REQ_NUM']
 
-# Warn when there is a big PR
-# warn("Big PR") if git.lines_of_code > 500
+warn("Big PR") if git.lines_of_code > 500
+message = "\n---\n\n"
 
-# xcode_summary.report 'fastlane/test_output/report.junit'
-
-test_results = 'fastlane/test_output/report.html'
-
-# message << result_errors
-message << test_results
-# Don't let testing shortcuts get into master by accident
-fail("fdescribe left in tests") if `grep -r fdescribe specs/ `.length > 1
-fail("fit left in tests") if `grep -r fit specs/ `.length > 1
+markdown "Test Results: " + ENV['BUILD_URL'] + "artifact/fastlane/test_output/report.html"
+message = "\n---\n\n"
