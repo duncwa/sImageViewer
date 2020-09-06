@@ -1,25 +1,20 @@
-BUILD_URL = ENV['build_url']
-BUILD_ID = ENV['build_id']
+require "danger"
+build_url = ENV['BUILD_URL']
+build_id = ENV['BUILD_ID']
 
-# Sometimes it's a README fix, or something like that - which isn't relevant for
-# including in a project's CHANGELOG for example
-declared_trivial = github.pr_title.include? "SwiftImageViewer PR Analysis"
-
-# Make it more obvious that a PR is a work in progress and shouldn't be merged yet
 warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
+message << github.pr_title
+message << github.pr_description
+message << github.pr_body
+message << github.pr_author
+message << build_id
+message << build_url
+message << "fastlane/test_output/report.html"
+message << "fastlane/test_output/report.junit"
+message = "\n---\n\n"
 
-# Warn when there is a big PR
-# warn("Big PR") if git.lines_of_code > 500
+warn("Big PR") if git.lines_of_code > 500
+message = "\n---\n\n"
 
-# xcode_summary.report 'fastlane/test_output/report.junit'
-
-test_results = 'fastlane/test_output/report.html'
-
-message << declared_trivial
-
-message << test_results
-message << "Test results output should be above this comment."
-# Don't let testing shortcuts get into master by accident
-# fail("fdescribe left in tests") if `grep -r fdescribe specs/ `.length > 1
-# fail("fit left in tests") if `grep -r fit specs/ `.length > 1
+message << " Test results output should posted to pull request in repository. "
 markdown << message
