@@ -4,7 +4,7 @@ build_id = ENV['BUILD_ID']
 
 
 message("This is a Pull Request run from ios_dangerfile.")
-message(""Build number: ${build_id} located here: ${build_url}"")
+message(" \${build_id} \${build_url} ")
 
 warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
 message << github.pr_title
