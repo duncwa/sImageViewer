@@ -13,8 +13,6 @@ message << github.pr_author
 message << build_id
 message << build_url
 message("${build_url}/artifact/fastlane/test_output/report.html")
-http://mobileci-prod.local:8080/job/Consumer/job/ImageViewer/job/ImageViewerios/job/PRA/job/IMG-IOS-PRA/150/artifact/fastlane/test_output/report.htm
-http://mobileci-prod.local:8080/job/Consumer/job/ImageViewer/job/ImageViewerios/job/PRA/job/IMG-IOS-PRA/150/display/redirect?page=artifacts
 
 message << "fastlane/test_output/report.junit"
 message = "\n---\n\n"
