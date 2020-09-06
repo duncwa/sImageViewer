@@ -26,7 +26,7 @@ pipeline {
     BUILD_NUM = "${env.BUILD_ID}"
     PR_NUM = "${env.PULL_REQ_NUM}"
     PR_URL = "https://github.com/duncwa/sImageViewer"
-    GIT_URL_1 = "https://github.com/duncwa/sImageViewer/pull"
+    GIT_URL_1 = "https://github.com/duncwa/sImageViewer"
     SLACK = "#cs-simageviewer-jenkins"
   }
 
