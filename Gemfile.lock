@@ -2,8 +2,16 @@ GEM
   remote: https://rubygems.org/
   specs:
     CFPropertyList (3.0.2)
+    activesupport (4.2.11.3)
+      i18n (~> 0.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
+      tzinfo (~> 1.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    algoliasearch (1.27.3)
+      httpclient (~> 2.8, >= 2.8.3)
+      json (>= 1.5.1)
     ansi (1.5.0)
     ast (2.4.1)
     atomos (0.1.3)
@@ -29,10 +37,49 @@ GEM
       cork
       nap
       open4 (~> 1.3)
+    cocoapods (1.9.3)
+      activesupport (>= 4.0.2, < 5)
+      claide (>= 1.0.2, < 2.0)
+      cocoapods-core (= 1.9.3)
+      cocoapods-deintegrate (>= 1.0.3, < 2.0)
+      cocoapods-downloader (>= 1.2.2, < 2.0)
+      cocoapods-plugins (>= 1.0.0, < 2.0)
+      cocoapods-search (>= 1.0.0, < 2.0)
+      cocoapods-stats (>= 1.0.0, < 2.0)
+      cocoapods-trunk (>= 1.4.0, < 2.0)
+      cocoapods-try (>= 1.1.0, < 2.0)
+      colored2 (~> 3.1)
+      escape (~> 0.0.4)
+      fourflusher (>= 2.3.0, < 3.0)
+      gh_inspector (~> 1.0)
+      molinillo (~> 0.6.6)
+      nap (~> 1.0)
+      ruby-macho (~> 1.4)
+      xcodeproj (>= 1.14.0, < 2.0)
+    cocoapods-core (1.9.3)
+      activesupport (>= 4.0.2, < 6)
+      algoliasearch (~> 1.0)
+      concurrent-ruby (~> 1.1)
+      fuzzy_match (~> 2.0.4)
+      nap (~> 1.0)
+      netrc (~> 0.11)
+      typhoeus (~> 1.0)
+    cocoapods-deintegrate (1.0.4)
+    cocoapods-downloader (1.4.0)
+    cocoapods-plugins (1.0.0)
+      nap
+    cocoapods-search (1.0.0)
+    cocoapods-stats (1.1.0)
+    cocoapods-trunk (1.5.0)
+      nap (>= 0.8, < 2.0)
+      netrc (~> 0.11)
+    cocoapods-try (1.2.0)
+    coderay (1.1.3)
     colored (1.2)
     colored2 (3.1.2)
     commander-fastlane (4.4.6)
       highline (~> 1.7.2)
+    concurrent-ruby (1.1.7)
     cork (0.3.0)
       colored2 (~> 3.1)
     danger (8.0.5)
@@ -56,13 +103,9 @@ GEM
       ox (~> 2.0)
     danger-commit_lint (0.0.7)
       danger-plugin-api (~> 1.0)
-    danger-eslint (0.1.5)
-      danger-plugin-api (~> 1.0)
     danger-findbugs (0.0.8)
       danger-plugin-api (~> 1.0)
       oga (~> 2.10)
-    danger-go (0.0.5)
-      danger-plugin-api (~> 1.0)
     danger-hlint (0.0.5)
       danger-plugin-api (~> 1.0)
     danger-ios_logs (0.1.2)
@@ -115,7 +158,15 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.6)
     emoji_regex (3.0.0)
+    escape (0.0.4)
+    eslintrb (2.1.0)
+      execjs
+      multi_json (>= 1.3)
+      rake
+    ethon (0.12.0)
+      ffi (>= 1.3.0)
     excon (0.76.0)
+    execjs (2.7.0)
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
     faraday-cookie_jar (0.0.7)
@@ -162,6 +213,11 @@ GEM
       xcodeproj (>= 1.13.0, < 2.0.0)
       xcpretty (~> 0.3.0)
       xcpretty-travis-formatter (>= 0.0.3)
+    fastlane-plugin-trainer (0.4.1)
+      trainer (>= 0.7.0)
+    ffi (1.13.1)
+    fourflusher (2.3.1)
+    fuzzy_match (2.0.4)
     gh_inspector (1.1.3)
     git (1.7.0)
       rchardet (~> 1.8)
@@ -198,6 +254,8 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     httpclient (2.8.3)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
     jmespath (1.4.0)
     json (2.3.1)
     jwt (2.2.2)
@@ -206,14 +264,18 @@ GEM
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
     memoist (0.16.2)
+    method_source (1.0.0)
     mini_magick (4.10.1)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
+    minitest (5.14.2)
+    molinillo (0.6.6)
     multi_json (1.15.0)
     multipart-post (2.0.0)
     nanaimo (0.3.0)
     nap (1.1.0)
     naturally (2.2.0)
+    netrc (0.11.0)
     no_proxy_fix (0.1.2)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
@@ -227,6 +289,10 @@ GEM
     os (1.1.1)
     ox (2.13.3)
     plist (3.5.0)
+    pry (0.13.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    psych (3.2.0)
     public_suffix (4.0.6)
     rake (13.0.1)
     rchardet (1.8.0)
@@ -240,6 +306,7 @@ GEM
     ruby-ll (2.1.2)
       ansi
       ast
+    ruby-macho (1.4.0)
     rubyzip (2.3.0)
     sawyer (0.8.2)
       addressable (>= 2.3.5)
@@ -257,10 +324,18 @@ GEM
     terminal-notifier (2.0.0)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
+    thread_safe (0.3.6)
+    trainer (0.9.1)
+      fastlane (>= 2.25.0)
+      plist (>= 3.1.0, < 4.0.0)
     tty-cursor (0.7.1)
     tty-screen (0.8.1)
     tty-spinner (0.9.3)
       tty-cursor (~> 0.7)
+    typhoeus (1.4.0)
+      ethon (>= 0.9.0)
+    tzinfo (1.2.7)
+      thread_safe (~> 0.1)
     uber (0.1.0)
     unf (0.1.4)
       unf_ext
@@ -282,6 +357,8 @@ GEM
       xcresult (~> 0.2.0)
     xcpretty (0.3.0)
       rouge (~> 2.0.7)
+    xcpretty-json-formatter (0.1.1)
+      xcpretty (~> 0.2, >= 0.0.7)
     xcpretty-travis-formatter (1.0.0)
       xcpretty (~> 0.2, >= 0.0.7)
     xcprofiler (0.6.3)
@@ -293,13 +370,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk-s3
+  cocoapods
   danger
   danger-android_lint
   danger-checkstyle_format
   danger-commit_lint
-  danger-eslint
   danger-findbugs
-  danger-go
   danger-hlint
   danger-ios_logs
   danger-jira
@@ -318,8 +395,17 @@ DEPENDENCIES
   danger-xcodebuild
   danger-xcov
   danger-xcprofiler
+  eslintrb
   fastlane
+  fastlane-plugin-trainer
+  json
+  nokogiri
+  plist
+  pry
+  psych
+  trainer
   xcpretty
+  xcpretty-json-formatter
 
 BUNDLED WITH
    1.17.3

@@ -52,7 +52,7 @@ platform :ios do
       scheme: "sFastIconUnitTests",
       code_coverage: true,
       output_directory: "fastlane/test_output",
-      formatter: "xcpretty-json-formatter"
+      result_bundle: true
     )
   end
 

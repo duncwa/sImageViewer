@@ -3,6 +3,17 @@ source 'https://rubygems.org'
 gem 'fastlane'
 gem 'danger'
 gem 'xcpretty'
+gem 'xcpretty-json-formatter'
+gem 'trainer'
+gem 'fastlane-plugin-trainer'
+gem 'cocoapods'
+gem 'json'
+gem 'nokogiri'
+gem 'plist'
+gem 'pry'
+gem 'psych'
+gem 'aws-sdk-s3'
+# gem 'golint'
 #gem 'danger-ruby-swiftlint' #A Danger plugin for SwiftLint.
 gem 'danger-xcode_summary' #A Danger plugin showing all build errors, warnings and unit tests results from xcodebuild.
 gem 'danger-xcov' #Danger plugin to validate the code coverage of the files changed in a pull request.
@@ -29,12 +40,12 @@ gem 'danger-missed_localizable_strings' #A Danger plugin to remind developers to
 gem 'danger-todoist' #Danger plugin to look for todo/fixme comments in pull requests.
 gem 'danger-ios_logs' #Danger plugin to detect any NSLog/print entries left in the code.
 gem 'danger-hlint' #A Danger plugin for Hlint.
-gem 'danger-eslint' #A Danger plugin for linting javascript with eslint.
+gem 'eslintrb' #A Danger plugin for linting javascript with eslint.
 gem 'danger-jira' #Danger plugin to link JIRA issues in a pull request.
 # gem 'danger-ruby-swiftformat' #A danger plugin to check Swift formatting using SwiftFormat.
 # gem 'danger-vale' #Vale plugin for Danger.
 gem 'danger-slack' #Post a notification to slack in a Dangerfile.
 gem 'danger-review_requests' #Danger plugin to request a review in pull requests.
 # gem 'danger-brakeman' #A Danger plugin for Brakeman.
-gem 'danger-go' #A Danger plugin for Golang.
+# gem 'danger-go' #A Danger plugin for Golang.
 # gem 'danger-kotlin-android-lint-plugin'
