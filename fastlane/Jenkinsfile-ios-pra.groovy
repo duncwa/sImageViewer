@@ -25,8 +25,8 @@ pipeline {
     CHANGE_ID = "${env.PULL_REQ_NUM}"
     BUILD_NUM = "${env.BUILD_ID}"
     PR_NUM = "${env.PULL_REQ_NUM}"
-    PR_URL = "https://github.com/duncwa/sImageViewer/pull/${env.PULL_REQ_NUM}"
-    GIT_URL_1 = "https://github.com/duncwa/sImageViewer/pull/${env.PULL_REQ_NUM}"
+    PR_URL = "https://github.com/duncwa/sImageViewer"
+    GIT_URL_1 = "https://github.com/duncwa/sImageViewer/pull"
     SLACK = "#cs-simageviewer-jenkins"
   }
 
@@ -35,10 +35,7 @@ pipeline {
       steps {
         echo 'Install Bundle Ruby Gems'
         sh 'bundle install'
-        sh 'pwd'
-        sh 'echo $PATH'
         sh 'rvm list'
-        sh 'echo $PULL_REQ_NUM'
         sh 'printenv'
       }
     }
