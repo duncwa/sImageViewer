@@ -3,19 +3,17 @@ require "danger"
 build_id = ENV['BUILD_ID']
 build_url = ENV['BUILD_URL']
 
-message("This is a Pull Request run from ios_dangerfile.")
-message ENV['BUILD_ID']
-message ENV['BUILD_URL']
+message("This is a Pull Request run from fastlane/ios_dangerfile.")
+message "Build Number: " + ENV['BUILD_ID']
+message "Build Url: " + ENV['BUILD_URL']
 
 warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
-message(github.pr_title)
-message(github.pr_body)
-message(github.pr_author)
-message(build_id)
-message(build_url)
-message ENV['BUILD_URL'] + "/artifact/fastlane/test_output/report.html"
+message "Pull Request Title: " + github.pr_title
+message "Pull Request Body: " + github.pr_body
+message "Pull Request Author: " + github.pr_author
+message "Pull Request Number: " + ENV['PULL_REQ_NUM']
 
-message << "fastlane/test_output/report.junit"
+message "Test Results: " + ENV['BUILD_URL'] + "artifact/fastlane/test_output/report.html"
 message = "\n---\n\n"
 
 warn("Big PR") if git.lines_of_code > 500
