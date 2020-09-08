@@ -52,7 +52,8 @@ platform :ios do
       scheme: "sFastIconUnitTests",
       code_coverage: true,
       output_directory: "fastlane/test_output",
-      result_bundle: true
+      result_bundle: true,
+      skip_slack: true
     )
   end
 
@@ -63,7 +64,8 @@ platform :ios do
       scheme: "sFastIconUITests",
       code_coverage: true,
       output_directory: "fastlane/test_output",
-      formatter: "xcpretty-json-formatter"
+      formatter: "xcpretty-json-formatter",
+      skip_slack: true
     )
   end
 
