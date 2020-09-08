@@ -108,6 +108,8 @@ platform :ios do
       channel: ENV["SLACK_CHANNEL"],
       message: "TEST post to slack",
       success: "SUCCESSFUL",
+      username: "cicdbuild",
+      use_webhook_configured_username_and_icon: true,  
       default_payloads: []
     )
   end
@@ -124,7 +126,7 @@ platform :ios do
     slack(
       channel: ENV["SLACK_CHANNEL"],
       message: message,
-      username: "Mobileci-prod",
+      username: "cicdbuild",
       success: status,
       default_payloads: []
     )

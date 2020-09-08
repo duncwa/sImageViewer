@@ -25,7 +25,7 @@ pipeline {
     PR_NUM = "${env.PULL_REQ_NUM}"
     PR_URL = "https://github.com/duncwa/sImageViewer"
     GIT_URL_1 = "https://github.com/duncwa/sImageViewer"
-    SLACK_CHANNEL = "${env.SLACK_CHANNL}"
+    SLACK_CHANNEL = "${env.SLACK_CHANNEL}"
   }
 
   stages {
