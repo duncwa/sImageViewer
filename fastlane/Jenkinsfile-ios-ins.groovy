@@ -54,18 +54,18 @@ pipeline {
 
       success {
         sh "echo 'Build Successful' "
-        slackSend channel: SLACK, message: "Inspect Successful - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
+        sh "bundle exec fastlane post_dev_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
       }
 
       unstable {
         sh "echo 'Build Unstable' "
-        slackSend channel: SLACK,  message: "Inspect Failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
+        sh "bundle exec fastlane post_dev_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
 
       }
 
       failure {
         sh "echo 'Build Failed' "
-        slackSend channel: SLACK,  message: "Inspect Failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
+        sh "bundle exec fastlane post_dev_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
 
       }
 
