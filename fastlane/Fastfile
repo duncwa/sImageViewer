@@ -5,10 +5,9 @@
 #   Created by Duncan Wallace 08/21/2020
 #   Copyright © 2020. Duncwa LLC.  All rights reserved
 
+require_relative "functions/readable_time"
 
 default_platform(:ios)
-
-
 platform :ios do
 
   desc "Upload dsyms and ipa results from dev builds"
@@ -169,10 +168,10 @@ platform :ios do
     build_url = ENV["BUILD_URL"]
     job_base_name = ENV["JOB_BASE_NAME"]
     build_id = ENV["BUILD_ID"]
-    run_time = options[:run_time]
+    run_time = to_clock(options[:run_time])
     status = options[:status]
     result = status == "SUCCESS" ? " 🚀 finished in" : " 💣💥failed after "
-    message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} minutes.*"
+    message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time}*"
     slack(
       channel: ENV["SLACK_CHANNEL"],
       message: message,
@@ -187,7 +186,7 @@ platform :ios do
     build_url = ENV["BUILD_URL"]
     job_base_name = ENV["JOB_BASE_NAME"]
     build_id = ENV["BUILD_ID"]
-    run_time = options[:run_time]
+    run_time = to_clock(options[:run_time])
     status = options[:status]
     result = status == "SUCCESS" ? " 🚀 finished in" : " 💣💥failed after "
     message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} minutes.*"
@@ -205,7 +204,7 @@ platform :ios do
     build_url = ENV["BUILD_URL"]
     job_base_name = ENV["JOB_BASE_NAME"]
     build_id = ENV["BUILD_ID"]
-    run_time = options[:run_time]
+    run_time = to_clock(options[:run_time])
     status = options[:status]
     result = status == "SUCCESS" ? " 🚀 finished in" : " 💣💥failed after "
     message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} minutes.*"
