@@ -1,26 +1,5 @@
 require "danger"
 
-#
-# build_id = ENV['BUILD_ID']
-# build_url = ENV['BUILD_URL']
-#
-# message "This is a Pull Request run from fastlane/ios_dangerfile."
-# message "Build Number: " + build_id
-# message "Build Url: " + ENV['BUILD_URL']
-#
-# warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
-# message "Pull Request Title: " + github.pr_title
-# message "Pull Request Body: " + github.pr_body
-# message "Pull Request Author: " + github.pr_author
-# message "Pull Request Number: " + ENV['PULL_REQ_NUM']
-#
-# warn("Big PR") if git.lines_of_code > 500
-# message = "\n---\n\n"
-#
-# markdown "Test Results: " + ENV['BUILD_URL'] + "artifact/fastlane/test_output/report.html"
-# message = "\n---\n\n"
-
-
 build_id = ENV['BUILD_ID']
 build_url = ENV['BUILD_URL']
 
@@ -28,9 +7,6 @@ markdown("Pull Request Title: " + github.pr_title)
 markdown("Pull Request Number: " + ENV['PULL_REQ_NUM'])
 markdown("Build Number: " + build_id)
 
-# project_name = "horses"
-# message('[html coverage report](https://circleci.com/api/v1/project/'+build_id+'/'+project_name+'/'+build_id+'/artifacts/0/$PULL_REQ_NUM/htmlcov/index.html)')
-# https://circleci.com/api/v1/project/82/horses/82/artifacts/0/$PULL_REQ_NUM/htmlcov/index.html
 message('[Test Results]('+ENV['BUILD_URL']+'artifact/fastlane/test_output/report.html)')
 message('[Jenkins Build URL]('+build_url+')')
 warn("PR is classed as Work in Progress[DO NOT MERGE]") if github.pr_title.include? "[WIP]"
