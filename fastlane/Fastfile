@@ -154,7 +154,7 @@ platform :ios do
   desc "Run Slack Testing"
   lane :slack_test do
     build_url = "http://mobileci-prod.local:8080/job/Consumer/job/ImageViewer/job/ImageViewerios/job/PRA/job/IMG-IOS-PRA/201/"
-    job_base_name = "IMG-IOS-PRA"
+    job_base_name = "TEST-IMG-IOS-PRA"
     build_id = "1"
     run_time = to_clock(4200)
     status = "SUCCESS"
