@@ -23,7 +23,9 @@ platform :ios do
         }
       },
       include_bitcode: true,
-      include_symbols: true
+      include_symbols: true,
+      derived_data_path: "fastlane/build",
+      output_directory: "fastlane/build"
     )
   end
 
@@ -40,8 +42,9 @@ platform :ios do
         }
       },
       include_bitcode: false,
-      include_symbols: true
-
+      include_symbols: true,
+      derived_data_path: "fastlane/build",
+      output_directory: "fastlane/build"
     )
   end
 
@@ -52,7 +55,8 @@ platform :ios do
       scheme: "sFastIconUnitTests",
       code_coverage: true,
       output_directory: "fastlane/test_output",
-      result_bundle: true
+      result_bundle: true,
+      skip_slack: true
     )
   end
 
@@ -63,7 +67,8 @@ platform :ios do
       scheme: "sFastIconUITests",
       code_coverage: true,
       output_directory: "fastlane/test_output",
-      formatter: "xcpretty-json-formatter"
+      formatter: "xcpretty-json-formatter",
+      skip_slack: true
     )
   end
 
@@ -97,15 +102,72 @@ platform :ios do
 
   desc "Run Danger for PRA Commit to Repo Comments"
   lane :ios_danger do
-    #sh 'bundle exec danger pr https://github.com/duncwa/sImageViewer/pull/2 --dangerfile=ios_dangerfile'
-    # danger(
-    #   use_bundle_exec: true,
-    #   verbose: true,
-    #   danger_id: "sfasticon_ios_dangerfile",
-    #   new_comment: false,
-    #   dangerfile: "fastlane/ios_dangerfile"
-    # )
     sh 'bundle exec danger --dangerfile=ios_dangerfile'
+  end
 
+  desc "Run Slack Testing"
+  lane :post_slack_message do
+    slack(
+      channel: ENV["SLACK_CHANNEL"],
+      message: "TEST post to slack",
+      success: "SUCCESSFUL",
+      username: "cicdbuild",
+      use_webhook_configured_username_and_icon: true,
+      default_payloads: []
+    )
+  end
+
+  desc "Run Slack reporting for PRA"
+  lane :post_pra_slack_message do |options|
+    build_url = ENV["BUILD_URL"]
+    job_base_name = ENV["JOB_BASE_NAME"]
+    build_id = ENV["BUILD_ID"]
+    run_time = options[:run_time]
+    status = options[:status]
+    result = status == "SUCCESS" ? " 🚀 finished in" : " 💣💥failed after "
+    message = "*<#{build_url}|#{job_base_name} Build ##{build_id}>* #{result} #{run_time}"
+    slack(
+      channel: ENV["SLACK_CHANNEL"],
+      message: message,
+      username: "cicdbuild",
+      success: status,
+      default_payloads: []
+    )
+  end
+
+  desc "Run Slack reporting for DEV"
+  lane :post_dev_slack_message do |options|
+    build_url = ENV["BUILD_URL"]
+    job_base_name = ENV["JOB_BASE_NAME"]
+    build_id = ENV["BUILD_ID"]
+    run_time = options[:run_time]
+    status = options[:status]
+    result = status == "SUCCESS" ? " 🚀 finished in" : " 💣💥failed after "
+    message = "*<#{build_url}|#{job_base_name} Build ##{build_id}>* #{result} #{run_time}"
+    slack(
+      channel: ENV["SLACK_CHANNEL"],
+      message: message,
+      username: "cicdbuild",
+      success: status,
+      default_payloads: []
+    )
+  end
+
+  desc "Run Slack reporting for RLS"
+  lane :post_rls_slack_message do |options|
+    build_url = ENV["BUILD_URL"]
+    job_base_name = ENV["JOB_BASE_NAME"]
+    build_id = ENV["BUILD_ID"]
+    run_time = options[:run_time]
+    status = options[:status]
+    result = status == "SUCCESS" ? " 🚀 finished in" : " 💣💥failed after "
+    message = "*<#{build_url}|#{job_base_name} Build ##{build_id}>* #{result} #{run_time}"
+    slack(
+      channel: ENV["SLACK_CHANNEL"],
+      message: message,
+      username: "cicdbuild",
+      success: status,
+      default_payloads: []
+    )
   end
 end

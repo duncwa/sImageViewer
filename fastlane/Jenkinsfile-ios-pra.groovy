@@ -25,7 +25,7 @@ pipeline {
     PR_NUM = "${env.PULL_REQ_NUM}"
     PR_URL = "https://github.com/duncwa/sImageViewer"
     GIT_URL_1 = "https://github.com/duncwa/sImageViewer"
-    SLACK = "#cs-simageviewer-jenkins"
+    SLACK_CHANNEL = "${env.SLACK_CHANNEL}"
   }
 
   stages {
@@ -59,17 +59,17 @@ pipeline {
 
     success {
       sh "echo 'Build Successful' "
-      slackSend channel: SLACK, message: "Build Successful - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
+      sh "bundle exec fastlane post_pra_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
     }
 
     unstable {
       sh "echo 'Build Unstable' "
-      slackSend channel: SLACK,  message: "Tests Failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
+      sh "bundle exec fastlane post_pra_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
     }
 
     failure {
       sh "echo 'Build Failed' "
-      slackSend channel: SLACK,  message: "Build Failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
+      sh "bundle exec fastlane post_pra_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
     }
   }
 }

@@ -574,6 +574,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development: Duncan Wallace (U3SH83FMR9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Duncan Wallace (U3SH83FMR9)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = HN3MSBG9DP;
 				INFOPLIST_FILE = "$(SRCROOT)/sFastIcon/Info.plist";
