@@ -37,7 +37,7 @@ pipeline {
               sh 'bundle exec fastlane generate_rls_ipa'
           }
           post {
-            always { stash includes: "fastlane/*_output/**/*", name: "generate_rls_ipa", allowEmpty: true }
+            always { stash includes: "fastlane/build/**/*", name: "generate_rls_ipa", allowEmpty: true }
           }
       }
     }
@@ -47,24 +47,23 @@ pipeline {
         script {
           try { unstash "generate_rls_ipa" }  catch (e) { echo "Failed to unstash stash: " + e.toString() }
         }
-        archiveArtifacts artifacts: "fastlane/*_output/**/*", fingerprint: true
         archiveArtifacts artifacts: "fastlane/build/*dSYM.zip", fingerprint: true
         archiveArtifacts artifacts: "fastlane/build/*.ipa", fingerprint: true
       }
 
       success {
         sh "echo 'IPA Successful' "
-        sh "bundle exec fastlane post_dev_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
+        sh "bundle exec fastlane post_dev_slack_message run_time:${currentBuild.durationString.replace(' and counting', '')} status:${currentBuild.result}"
       }
 
       unstable {
         sh "echo 'IPA Unsuccessful' "
-        sh "bundle exec fastlane post_dev_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
+        sh "bundle exec fastlane post_dev_slack_message run_time:${currentBuild.durationString.replace(' and counting', '')} status:${currentBuild.result}"
       }
 
       failure {
         sh "echo 'IPA Failed' "
-        sh "bundle exec fastlane post_dev_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
+        sh "bundle exec fastlane post_dev_slack_message run_time:${currentBuild.durationString.replace(' and counting', '')} status:${currentBuild.result}"
       }
 
     }
