@@ -53,7 +53,7 @@ pipeline {
 
       success {
         sh "echo 'IPA Successful' "
-        sh "bundle exec fastlane post_dev_slack_message run_time:${(currentBuild.duration / 1000 / 60).round(2)} status:${currentBuild.result}"
+        sh "bundle exec fastlane post_dev_slack_message run_time:${currentBuild.duration / 1000 / 60} status:${currentBuild.result}"
       }
 
       unstable {
