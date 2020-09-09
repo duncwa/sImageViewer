@@ -34,10 +34,10 @@ pipeline {
       stage('Build and Upload IPA') {
           steps {
               echo 'Generate IPA'
-              sh 'bundle exec fastlane generate_rls_ipa'
+              sh 'bundle exec fastlane publish_rls_ipa'
           }
           post {
-            always { stash includes: "fastlane/build/**/*", name: "generate_rls_ipa", allowEmpty: true }
+            always { stash includes: "fastlane/build/**/*", name: "publish_rls_ipa", allowEmpty: true }
           }
       }
     }
@@ -45,7 +45,7 @@ pipeline {
     post {
       always {
         script {
-          try { unstash "generate_rls_ipa" }  catch (e) { echo "Failed to unstash stash: " + e.toString() }
+          try { unstash "publish_rls_ipa" }  catch (e) { echo "Failed to unstash stash: " + e.toString() }
         }
         archiveArtifacts artifacts: "fastlane/build/*dSYM.zip", fingerprint: true
         archiveArtifacts artifacts: "fastlane/build/*.ipa", fingerprint: true

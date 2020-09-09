@@ -8,7 +8,55 @@
 
 default_platform(:ios)
 
+
 platform :ios do
+
+  desc "Upload dsyms and ipa results from dev builds"
+  lane :appcenter_upload_dev do
+    appcenter_upload(
+      api_token: ENV["APPCENTER_TOKEN_DLO"],
+      owner_name: ENV["APPCENTER_ORG"],
+      owner_type: "organization", # Default is user - set to organization for appcenter organizations
+      app_name: ENV["APPCENTER_DEV_APP_NAME"],
+      notify_testers: true, # Set to false if you don't want to notify testers of your new release (default: `false`)
+      file: "fastlane/build/FastImageViewer.ipa",
+      build_number: ENV["APPCENTER_DISTRIBUTE_BUILD_NUMBER"],
+      version: ENV["APPCENTER_DISTRIBUTE_VERSION"],
+      app_platform: "ios",
+      app_os: "iOS"
+    )
+  end
+
+  desc "Upload dsyms and ipa results from rls builds"
+  lane :appcenter_upload_rls do
+    appcenter_upload(
+      api_token: ENV["APPCENTER_TOKEN_DLO"],
+      owner_name: ENV["APPCENTER_ORG"],
+      owner_type: "organization", # Default is user - set to organization for appcenter organizations
+      app_name: ENV["APPCENTER_DEV_APP_NAME"],
+      notify_testers: true, # Set to false if you don't want to notify testers of your new release (default: `false`)
+      file: "fastlane/build/FastImageViewer.ipa",
+      dsym: ENV["APPCENTER_DISTRIBUTE_DSYM"],
+      build_number: ENV["APPCENTER_DISTRIBUTE_BUILD_NUMBER"],
+      version: ENV["APPCENTER_DISTRIBUTE_VERSION"],
+      app_platform: "ios",
+      app_os: "iOS"
+    )
+  end
+
+  desc "publish dev builds"
+  lane :publish_dev_ipa do
+    generate_dev_ipa
+    appcenter_upload_dev
+  end
+
+
+  desc "Publish rls builds"
+  lane :publish_rls_ipa do
+    generate_rls_ipa
+    appcenter_upload_rls
+  end
+
   desc "Run unit tests for sFastIcon iOS App"
   lane :generate_rls_ipa do
     build_app(
@@ -90,7 +138,6 @@ platform :ios do
     ## Call inspection bulkextractor on *.ipa file
     sh 'echo "Running Bulkextractor inspection"'
   end
-
 
   desc "Generate new localized screenshots for sFastIcon"
   lane :screenshots do
