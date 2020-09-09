@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/microsoft/fastlane-plugin-appcenter.git
+  revision: bf0b56f5d4d0d24017f600976b8c3335dd2da84f
+  specs:
+    fastlane-plugin-appcenter (1.9.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -397,6 +403,7 @@ DEPENDENCIES
   danger-xcprofiler
   eslintrb
   fastlane
+  fastlane-plugin-appcenter!
   fastlane-plugin-trainer
   json
   nokogiri

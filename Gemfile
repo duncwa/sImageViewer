@@ -1,3 +1,10 @@
+#!/usr/bin/env groovy
+#
+#   Gemfile
+#   sImageViewer
+#   Created by Duncan Wallace 09/08/2020
+#   Copyright © 2020. Duncwa LLC.  All rights reserved
+
 # source 'https://github.com/danger'
 source 'https://rubygems.org'
 gem 'fastlane'
@@ -49,3 +56,6 @@ gem 'danger-review_requests' #Danger plugin to request a review in pull requests
 # gem 'danger-brakeman' #A Danger plugin for Brakeman.
 # gem 'danger-go' #A Danger plugin for Golang.
 # gem 'danger-kotlin-android-lint-plugin'
+
+plugins_path = File.join(File.dirname(__FILE__), 'fastlane', 'Pluginfile')
+eval_gemfile(plugins_path) if File.exist?(plugins_path)

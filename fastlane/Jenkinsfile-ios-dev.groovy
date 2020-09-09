@@ -33,20 +33,20 @@ pipeline {
           }
       }
       stage('Build and Upload IPA') {
-          steps {
-              echo 'Generate IPA'
-              sh 'bundle exec fastlane generate_dev_ipa'
-          }
-          post {
-            always { stash includes: "fastlane/build/**/*", name: "generate_dev_ipa", allowEmpty: true }
-          }
+        steps {
+            echo 'Generate IPA'
+            sh 'bundle exec fastlane publish_dev_ipa'
+        }
+        post {
+          always { stash includes: "fastlane/build/**/*", name: "publish_dev_ipa", allowEmpty: true }
+        }
       }
     }
 
     post {
       always {
         script {
-          try { unstash "generate_dev_ipa" }  catch (e) { echo "Failed to unstash stash: " + e.toString() }
+          try { unstash "publish_dev_ipa" }  catch (e) { echo "Failed to unstash stash: " + e.toString() }
         }
         archiveArtifacts artifacts: "fastlane/build/*.ipa", fingerprint: true
       }
@@ -65,6 +65,5 @@ pipeline {
         sh "echo 'IPA Failed' "
         sh "bundle exec fastlane post_dev_slack_message run_time:${currentBuild.duration / 1000 / 60} status:${currentBuild.result}"
       }
-
     }
 }
