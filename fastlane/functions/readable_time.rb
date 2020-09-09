@@ -6,5 +6,5 @@
 #   Copyright © 2020. Duncwa LLC.  All rights reserved
 
 def to_clock(secs)
- Time.at(secs).utc.strftime("%H: hrs %M: mins %S secs. ")
+ Time.at(secs.to_i).utc.strftime("%H: hrs %M: mins %S secs. ")
 end
