@@ -15,7 +15,7 @@ warn("Big PR") if git.lines_of_code > 500
 message = "\n---\n\n"
 
 xcode_reports = [
-  Danger::XcodeReport.new(name: "iOS PRA", lane: "test_ios_pra", include_test_results: true)
+  Danger::XcodeServer.new(name: "iOS PRA", lane: "test_ios_pra", include_test_results: true)
 ]
 
 message << xcode.markdown(reports: xcode_reports, build_id: build_id, build_url: build_url)
@@ -23,8 +23,8 @@ message << xcode.markdown(reports: xcode_reports, build_id: build_id, build_url:
 message = "\n---\n\n"
 
 xccov_reports = [
-  Danger::XccovReport.new(name: "iOS PRA", lane: "test_ios_pra")
+  Danger::XccovServer.new(name: "iOS PRA", lane: "test_ios_pra")
 ]
 
 message << xccov.markdown(reports: xccov_reports, build_url: build_url)
-markdown message 
+markdown message
