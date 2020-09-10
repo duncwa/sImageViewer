@@ -5,10 +5,9 @@
 #   Created by Duncan Wallace 08/21/2020
 #   Copyright © 2020. Duncwa LLC.  All rights reserved
 
+require_relative "functions/readable_time"
 
 default_platform(:ios)
-
-
 platform :ios do
 
   desc "Upload dsyms and ipa results from dev builds"
@@ -123,20 +122,26 @@ platform :ios do
   desc "Run simulator tests for sFastIcon iOS App"
   lane :run_ios_ins do
     build_app(
-      codesigning_identity: "Apple Development",
+      codesigning_identity: "Apple Distribution",
       clean: true,
       scheme: "sFastIcon",
-      configuration: "Debug",
+      configuration: "Release",
       export_options: {
-        method: "development",
+        method: "app-store",
         provisioningProfiles: {
-          "com.dw4workonly.fastimage" => "DEV_SwiftImageViewer"
+          "com.dw4workonly.fastimage" => "DIS_SwiftImageViewer"
         }
       },
-      include_bitcode: false
+      include_bitcode: true,
+      include_symbols: true,
+      derived_data_path: "fastlane/build",
+      output_directory: "fastlane/build"
     )
-    ## Call inspection bulkextractor on *.ipa file
+    ## Call inspection bulkextractor on *.ipa and dSYMS file
+    sh 'echo $PWD'
     sh 'echo "Running Bulkextractor inspection"'
+    sh 'bulk_extractor -o build/output-ipa -R build/FastImageViewer.ipa'
+    sh 'bulk_extractor -o build/output-dsym -R build/FastImageViewer.app.dSYM.zip'
   end
 
   desc "Generate new localized screenshots for sFastIcon"
@@ -153,13 +158,19 @@ platform :ios do
   end
 
   desc "Run Slack Testing"
-  lane :post_slack_message do
+  lane :slack_test do
+    build_url = "http://mobileci-prod.local:8080/job/Consumer/job/ImageViewer/job/ImageViewerios/job/PRA/job/IMG-IOS-PRA/201/"
+    job_base_name = "TEST-IMG-IOS-PRA"
+    build_id = "1"
+    run_time = to_clock(4200)
+    status = "SUCCESS"
+    result = status == "SUCCESS" ? " 🚀 finished in" : " 💣💥failed after "
+    message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} <#{build_url+'artifact/fastlane/test_output/report.html'}|#{'Results'}> *"
     slack(
       channel: ENV["SLACK_CHANNEL"],
-      message: "TEST post to slack",
-      success: "SUCCESSFUL",
+      message: message,
       username: "cicdbuild",
-      use_webhook_configured_username_and_icon: true,
+      success: status,
       default_payloads: []
     )
   end
@@ -169,10 +180,10 @@ platform :ios do
     build_url = ENV["BUILD_URL"]
     job_base_name = ENV["JOB_BASE_NAME"]
     build_id = ENV["BUILD_ID"]
-    run_time = options[:run_time]
+    run_time = to_clock(options[:run_time])
     status = options[:status]
     result = status == "SUCCESS" ? " 🚀 finished in" : " 💣💥failed after "
-    message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} minutes.*"
+    message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} <#{build_url+'artifact/fastlane/test_output/report.html'}|#{'Results'}> *"
     slack(
       channel: ENV["SLACK_CHANNEL"],
       message: message,
@@ -187,10 +198,10 @@ platform :ios do
     build_url = ENV["BUILD_URL"]
     job_base_name = ENV["JOB_BASE_NAME"]
     build_id = ENV["BUILD_ID"]
-    run_time = options[:run_time]
+    run_time = to_clock(options[:run_time])
     status = options[:status]
     result = status == "SUCCESS" ? " 🚀 finished in" : " 💣💥failed after "
-    message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} minutes.*"
+    message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time}*"
     slack(
       channel: ENV["SLACK_CHANNEL"],
       message: message,
@@ -205,10 +216,10 @@ platform :ios do
     build_url = ENV["BUILD_URL"]
     job_base_name = ENV["JOB_BASE_NAME"]
     build_id = ENV["BUILD_ID"]
-    run_time = options[:run_time]
+    run_time = to_clock(options[:run_time])
     status = options[:status]
     result = status == "SUCCESS" ? " 🚀 finished in" : " 💣💥failed after "
-    message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} minutes.*"
+    message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time}*"
     slack(
       channel: ENV["SLACK_CHANNEL"],
       message: message,

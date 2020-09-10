@@ -17,7 +17,7 @@ pipeline {
 
     environment {
       BUILD_NUM = "${env.BUILD_ID}"
-      SLACK = "#cs-simageviewer-jenkins"
+      SLACK_CHANNEL = "${env.SLACK_CHANNEL}"
     }
 
     stages {
@@ -53,17 +53,17 @@ pipeline {
 
       success {
         sh "echo 'IPA Successful' "
-        sh "bundle exec fastlane post_rls_slack_message run_time:${currentBuild.duration / 1000 / 60} status:${currentBuild.result}"
+        sh "bundle exec fastlane post_rls_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
       }
 
       unstable {
         sh "echo 'IPA Unsuccessful' "
-        sh "bundle exec fastlane post_rls_slack_message run_time:${currentBuild.duration / 1000 / 60} status:${currentBuild.result}"
+        sh "bundle exec fastlane post_rls_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
       }
 
       failure {
         sh "echo 'IPA Failed' "
-        sh "bundle exec fastlane post_rls_slack_message run_time:${currentBuild.duration / 1000 / 60} status:${currentBuild.result}"
+        sh "bundle exec fastlane post_rls_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
       }
 
     }
