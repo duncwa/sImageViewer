@@ -21,7 +21,7 @@ pipeline {
       BUILD_NUM = "${env.BUILD_ID}"
       PR_NUM = "${env.PULL_REQ_NUM}"
       PR_URL = "https://github.com/duncwa/sImageViewer/pull/${env.PULL_REQ_NUM}"
-      SLACK = "#cs-simageviewer-jenkins"
+      SLACK_CHANNEL = "${env.SLACK_CHANNEL}"
     }
 
     stages {

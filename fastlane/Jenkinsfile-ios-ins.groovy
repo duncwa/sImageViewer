@@ -48,7 +48,7 @@ pipeline {
           try { unstash "run_ios_ins" }  catch (e) { echo "Failed to unstash stash: " + e.toString() }
         }
         archiveArtifacts artifacts: "fastlane/*_output/**/*", fingerprint: true
-        // archiveArtifacts artifacts: "*dSYM.zip", fingerprint: true
+        archiveArtifacts artifacts: "*dSYM.zip", fingerprint: true
         archiveArtifacts artifacts: "*.ipa", fingerprint: true
       }
 
@@ -66,7 +66,6 @@ pipeline {
       failure {
         sh "echo 'Build Failed' "
         sh "bundle exec fastlane post_dev_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
-
       }
 
     }
