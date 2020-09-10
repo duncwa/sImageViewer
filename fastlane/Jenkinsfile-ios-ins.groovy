@@ -37,7 +37,7 @@ pipeline {
             sh 'bundle exec fastlane run_ios_ins'
           }
           post {
-            always { stash includes: "fastlane/*_output/**/*", name: "run_ios_ins", allowEmpty: true }
+            always { stash includes: "fastlane/build/output-*", name: "run_ios_ins", allowEmpty: true }
           }
       }
     }
@@ -47,7 +47,7 @@ pipeline {
         script {
           try { unstash "run_ios_ins" }  catch (e) { echo "Failed to unstash stash: " + e.toString() }
         }
-        archiveArtifacts artifacts: "fastlane/*_output/**/*", fingerprint: true
+        archiveArtifacts artifacts: "fastlane/build/output-*", fingerprint: true
         archiveArtifacts artifacts: "*dSYM.zip", fingerprint: true
         archiveArtifacts artifacts: "*.ipa", fingerprint: true
       }
