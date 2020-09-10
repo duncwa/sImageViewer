@@ -47,8 +47,8 @@ pipeline {
         script {
           try { unstash "run_ios_ins" }  catch (e) { echo "Failed to unstash stash: " + e.toString() }
         }
-        archiveArtifacts artifacts: "*dSYM.zip", fingerprint: true
-        archiveArtifacts artifacts: "*.ipa", fingerprint: true
+        archiveArtifacts artifacts: "fastlane/build/*dSYM.zip", fingerprint: true
+        archiveArtifacts artifacts: "fastlane/build/*.ipa", fingerprint: true
       }
 
       success {
