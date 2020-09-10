@@ -33,8 +33,8 @@ pipeline {
       }
       stage('Inspect for Sensitive Data') {
           steps {
-              echo 'Run Inspection'
-              sh 'bundle exec fastlane run_ios_ins'
+            echo 'Run Inspection'
+            sh 'bundle exec fastlane run_ios_ins'
           }
           post {
             always { stash includes: "fastlane/*_output/**/*", name: "run_ios_ins", allowEmpty: true }
