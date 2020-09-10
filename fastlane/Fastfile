@@ -138,9 +138,10 @@ platform :ios do
       output_directory: "fastlane/build"
     )
     ## Call inspection bulkextractor on *.ipa and dSYMS file
+    sh 'echo $PWD'
     sh 'echo "Running Bulkextractor inspection"'
-    sh 'bulk_extractor -o fastlane/build/output-ipa -R fastlane/build/FastImageViewer.ipa'
-    sh 'bulk_extractor -o fastlane/build/output-dsym -R fastlane/build/FastImageViewer.app.dSYM.zip'
+    sh 'bulk_extractor -o $PWD/fastlane/build/output-ipa -R $PWD/fastlane/build/FastImageViewer.ipa'
+    sh 'bulk_extractor -o $PWD/fastlane/build/output-dsym -R $PWD/fastlane/build/FastImageViewer.app.dSYM.zip'
   end
 
   desc "Generate new localized screenshots for sFastIcon"
