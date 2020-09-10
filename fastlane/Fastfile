@@ -120,23 +120,14 @@ platform :ios do
   end
 
   desc "Run simulator tests for sFastIcon iOS App"
+  lane :upload_to_appstore do
+    # Call this lane after performing generate_rls_ipa
+    # Placeholder for commands to upload to appstore
+  end
+
+  desc "Perform Inspection of Artifacts Bulkextractor"
   lane :run_ios_ins do
-    build_app(
-      codesigning_identity: "Apple Distribution",
-      clean: true,
-      scheme: "sFastIcon",
-      configuration: "Release",
-      export_options: {
-        method: "app-store",
-        provisioningProfiles: {
-          "com.dw4workonly.fastimage" => "DIS_SwiftImageViewer"
-        }
-      },
-      include_bitcode: true,
-      include_symbols: true,
-      derived_data_path: "fastlane/build",
-      output_directory: "fastlane/build"
-    )
+    generate_rls_ipa
     ## Call inspection bulkextractor on *.ipa and dSYMS file
     sh 'echo $PWD'
     sh 'echo "Running Bulkextractor inspection"'
