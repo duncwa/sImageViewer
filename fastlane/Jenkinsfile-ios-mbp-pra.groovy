@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 //
-//  Jenkinsfile-ios-pra.groovy
+//  Jenkinsfile-ios-mbp-pra.groovy
 //  sImageViewer
 //  Created by Duncan Wallace 08/21/2020
 //  Copyright © 2020. Duncwa LLC.  All rights reserved
@@ -19,11 +19,11 @@ pipeline {
     DANGER_GITHUB_CREDS_USR = credentials("s.githubtokentwo")
     DANGER_GITHUB_API_TOKEN_USR = "${env.DANGER_GITHUB_CREDS_USR}"
     DANGER_GITHUB_API_TOKEN_PSW = "${env.DANGER_GITHUB_CREDS_PSW}"
-    ghprbPullId = "${env.PULL_REQ_NUM}"
-    CHANGE_ID = "${env.PULL_REQ_NUM}"
+    ghprbPullId = "${env.CHANGE_ID}"
+    CHANGE_ID = "${env.CHANGE_ID}"
     BUILD_NUM = "${env.BUILD_ID}"
-    PR_NUM = "${env.PULL_REQ_NUM}"
-    PR_URL = "https://github.com/duncwa/sImageViewer/pull/${PULL_REQ_NUM}"
+    PR_NUM = "${env.CHANGE_ID}"
+    PR_URL = "https://github.com/duncwa/sImageViewer/pull/${CHANGE_ID}"
     GIT_URL_1 = "https://github.com/duncwa/sImageViewer"
     SLACK_CHANNEL = "${env.SLACK_CHANNEL}"
   }
@@ -53,7 +53,7 @@ pipeline {
       script {
         try { unstash "test_ios_pra" }  catch (e) { echo "Failed to unstash stash: " + e.toString() }
       }
-      sh "bundle exec fastlane ios_danger"
+      sh "bundle exec fastlane ios_danger_mbp"
       archiveArtifacts artifacts: "fastlane/*_output/**/*", fingerprint: true
     }
 

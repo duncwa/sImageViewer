@@ -6,7 +6,7 @@ build_url = ENV['BUILD_URL']
 message = "\n---\n\n"
 
 markdown("Pull Request Title: " + github.pr_title)
-markdown("Pull Request Number: " + ENV['PULL_REQ_NUM'])
+markdown("Pull Request Number: " + ENV['CHANGE_ID'])
 markdown("Build Number: " + build_id)
 
 message('[Test Results]('+ENV['BUILD_URL']+'artifact/fastlane/test_output/report.html)')

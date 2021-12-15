@@ -33,11 +33,11 @@ pipeline {
       }
       stage('Inspect for Sensitive Data') {
           steps {
-              echo 'Run Inspection'
-              sh 'bundle exec fastlane run_ios_ins'
+            echo 'Run Inspection'
+            sh 'bundle exec fastlane run_ios_ins'
           }
           post {
-            always { stash includes: "fastlane/*_output/**/*", name: "run_ios_ins", allowEmpty: true }
+            always { stash includes: "fastlane/build/**/*", name: "run_ios_ins", allowEmpty: true }
           }
       }
     }
@@ -47,26 +47,24 @@ pipeline {
         script {
           try { unstash "run_ios_ins" }  catch (e) { echo "Failed to unstash stash: " + e.toString() }
         }
-        archiveArtifacts artifacts: "fastlane/*_output/**/*", fingerprint: true
-        // archiveArtifacts artifacts: "*dSYM.zip", fingerprint: true
-        archiveArtifacts artifacts: "*.ipa", fingerprint: true
+        archiveArtifacts artifacts: "fastlane/build/*dSYM.zip", fingerprint: true
+        archiveArtifacts artifacts: "fastlane/build/*.ipa", fingerprint: true
       }
 
       success {
         sh "echo 'Build Successful' "
-        slackSend channel: SLACK, message: "Inspect Successful - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
+        sh "bundle exec fastlane post_dev_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
       }
 
       unstable {
         sh "echo 'Build Unstable' "
-        slackSend channel: SLACK,  message: "Inspect Failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
+        sh "bundle exec fastlane post_dev_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
 
       }
 
       failure {
         sh "echo 'Build Failed' "
-        slackSend channel: SLACK,  message: "Inspect Failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link>)"
-
+        sh "bundle exec fastlane post_dev_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
       }
 
     }
