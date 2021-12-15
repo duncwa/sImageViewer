@@ -53,7 +53,7 @@ pipeline {
       script {
         try { unstash "test_ios_pra" }  catch (e) { echo "Failed to unstash stash: " + e.toString() }
       }
-      sh "bundle exec fastlane ios_danger"
+      sh "bundle exec fastlane ios_danger_mbp"
       archiveArtifacts artifacts: "fastlane/*_output/**/*", fingerprint: true
     }
 
