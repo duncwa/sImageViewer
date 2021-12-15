@@ -23,7 +23,7 @@ pipeline {
     CHANGE_ID = "${env.PULL_REQ_NUM}"
     BUILD_NUM = "${env.BUILD_ID}"
     PR_NUM = "${env.PULL_REQ_NUM}"
-    PR_URL = "https://github.com/duncwa/sImageViewer"
+    PR_URL = "https://github.com/duncwa/sImageViewer/pull/${PULL_REQ_NUM}"
     GIT_URL_1 = "https://github.com/duncwa/sImageViewer"
     SLACK_CHANNEL = "${env.SLACK_CHANNEL}"
   }
