@@ -13,6 +13,7 @@ source 'https://rubygems.org'
   gem 'jenkins_api_client'
   gem 'xcpretty-json-formatter'
   gem 'artifactory'
+  gem 'fastlane-plugin-appcenter', '~> 1.11.1'
 # gem 'trainer'
 # gem 'fastlane-plugin-trainer'
   gem 'cocoapods'
@@ -64,6 +65,3 @@ gem 'rubocop'
 gem 'rubocop-performance'
 gem 'simplecov'
 gem 'simplecov-json'
-
-plugins_path = File.join(File.dirname(__FILE__), 'fastlane', 'Pluginfile')
-eval_gemfile(plugins_path) if File.exist?(plugins_path)
