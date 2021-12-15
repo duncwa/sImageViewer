@@ -143,9 +143,14 @@ platform :ios do
     )
   end
 
-  desc "Run Danger for PRA Commit to Repo Comments"
+  desc "Run Danger for PRA MultiBranch Pipeline Commit to Repo Comments"
   lane :ios_danger_mbp do
     sh 'bundle exec danger --dangerfile=ios_dangerfile_mbp'
+  end
+
+  desc "Run Danger for PRA Commit to Repo Comments"
+  lane :ios_danger do
+    sh 'bundle exec danger --dangerfile=ios_dangerfile'
   end
 
 
