@@ -78,5 +78,4 @@ class sFastIconUnitTests: XCTestCase {
       XCTAssertEqual(getProperty(value: "DUB"), expected, "Expected DUB to equal Dubai")
       XCTAssertEqual(getProperty(value: "MMM"), nil, "Expected MMM to equal nil")
     }
-    
 }

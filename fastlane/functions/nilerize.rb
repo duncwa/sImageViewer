@@ -6,5 +6,5 @@
 #   Copyright © 2020. Duncwa LLC.  All rights reserved
 
 def nilerize(*args)
-  args.find {|a| !a.nil? }
+  args.find { |a| !a.nil? }
 end
