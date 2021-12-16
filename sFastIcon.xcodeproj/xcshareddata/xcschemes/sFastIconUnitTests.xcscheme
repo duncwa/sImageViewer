@@ -38,6 +38,16 @@
                ReferencedContainer = "container:sFastIcon.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D52C562D276B75DF00AAC46B"
+               BuildableName = "sFastIconUISNAPTests.xctest"
+               BlueprintName = "sFastIconUISNAPTests"
+               ReferencedContainer = "container:sFastIcon.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

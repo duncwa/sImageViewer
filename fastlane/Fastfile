@@ -27,38 +27,40 @@ platform :ios do
     )
   end
 
-  desc "Upload dsyms and ipa results from rls builds"
-  lane :appcenter_upload_rls do
-    appcenter_upload(
-      api_token: ENV["APPCENTER_TOKEN_DLO"],
-      owner_name: ENV["APPCENTER_ORG"],
-      owner_type: "organization", # Default is user - set to organization for appcenter organizations
-      app_name: ENV["APPCENTER_RLS_APP_NAME"],
-      notify_testers: true, # Set to false if you don't want to notify testers of your new release (default: `false`)
-      file: "fastlane/build/FastImageViewer.ipa",
-      dsym: ENV["APPCENTER_DISTRIBUTE_DSYM"],
-      build_number: ENV["APPCENTER_DISTRIBUTE_BUILD_NUMBER"],
-      version: ENV["APPCENTER_DISTRIBUTE_VERSION"],
-      app_platform: "ios",
-      app_os: "iOS"
-    )
-  end
-
-  desc "publish dev builds"
+  desc "Publish Develop Builds"
   lane :publish_dev_ipa do
     generate_dev_ipa
     appcenter_upload_dev
   end
 
+  desc "Generate Develop Builds"
+  lane :generate_dev_ipa do
+    build_app(
+      codesigning_identity: "Apple Development",
+      clean: true,
+      scheme: "sFastIcon",
+      configuration: "Debug",
+      export_options: {
+        method: "development",
+        provisioningProfiles: {
+          "com.dw4workonly.fastimage" => "DEV_SwiftImageViewer"
+        }
+      },
+      include_bitcode: false,
+      include_symbols: true,
+      derived_data_path: "fastlane/build",
+      output_directory: "fastlane/build"
+    )
+  end
 
-  desc "Publish rls builds"
+  desc "Publish Release Builds"
   lane :publish_rls_ipa do
     generate_rls_ipa
     appcenter_upload_rls
-    appstore_rls_ipa
+    upload_to_appstore
   end
 
-  desc "Run unit tests for sFastIcon iOS App"
+  desc "Generate Release Builds"
   lane :generate_rls_ipa do
     build_app(
       codesigning_identity: "Apple Distribution",
@@ -78,29 +80,29 @@ platform :ios do
     )
   end
 
-  lane :appstore_rls_ipa do
-    capture_screenshots                  # generate new screenshots for the App Store
-    #sync_code_signing(type: "appstore")  # see code signing guide for more information
-    upload_to_app_store                  # upload your app to App Store Connect
-    slack(message: "Successfully uploaded a new App Store build")
+  desc "Upload dsyms and ipa results to AppCenter"
+  lane :appcenter_upload_rls do
+    appcenter_upload(
+      api_token: ENV["APPCENTER_TOKEN_DLO"],
+      owner_name: ENV["APPCENTER_ORG"],
+      owner_type: "organization", # Default is user - set to organization for appcenter organizations
+      app_name: ENV["APPCENTER_RLS_APP_NAME"],
+      notify_testers: true, # Set to false if you don't want to notify testers of your new release (default: `false`)
+      file: "fastlane/build/FastImageViewer.ipa",
+      dsym: ENV["APPCENTER_DISTRIBUTE_DSYM"],
+      build_number: ENV["APPCENTER_DISTRIBUTE_BUILD_NUMBER"],
+      version: ENV["APPCENTER_DISTRIBUTE_VERSION"],
+      app_platform: "ios",
+      app_os: "iOS"
+    )
   end
 
-  lane :generate_dev_ipa do
-    build_app(
-      codesigning_identity: "Apple Development",
-      clean: true,
-      scheme: "sFastIcon",
-      configuration: "Debug",
-      export_options: {
-        method: "development",
-        provisioningProfiles: {
-          "com.dw4workonly.fastimage" => "DEV_SwiftImageViewer"
-        }
-      },
-      include_bitcode: false,
-      include_symbols: true,
-      derived_data_path: "fastlane/build",
-      output_directory: "fastlane/build"
+  desc "Upload ipa from Release Builds to AppStore"
+  lane :upload_to_appstore do
+    deliver(
+      ipa: "fastlane/build/FastImageViewer.ipa",
+      skip_screenshots: true,
+      force: true
     )
   end
 
@@ -131,13 +133,7 @@ platform :ios do
     )
   end
 
-  desc "Run simulator tests for sFastIcon iOS App"
-  lane :upload_to_appstore do
-    # Call this lane after performing generate_rls_ipa
-    # Placeholder for commands to upload to appstore
-  end
-
-  desc "Perform Inspection of Artifacts Bulkextractor"
+  desc "Perform Inspection of Artifacts using Bulkextractor"
   lane :run_ios_ins do
     generate_rls_ipa
     ## Call inspection bulkextractor on *.ipa and dSYMS file
@@ -149,8 +145,9 @@ platform :ios do
 
   desc "Generate new localized screenshots for sFastIcon"
   lane :screenshots do
+    device = ENV["DEVICE"]
     capture_screenshots(
-      devices: ["iPhone 8"],
+      devices: ["iPhone X", "iPhone 8", "iPhone 11", "iPhone 11 Pro Max", "iPhone 13 Pro Max"],
       scheme: "sFastIconUITests"
     )
   end
@@ -164,7 +161,6 @@ platform :ios do
   lane :ios_danger do
     sh 'bundle exec danger --dangerfile=ios_dangerfile'
   end
-
 
   desc "Run Slack Testing"
   lane :slack_test do
@@ -183,8 +179,6 @@ platform :ios do
       default_payloads: []
     )
   end
-
-
 
   desc "Run Slack reporting for PRA"
   lane :post_pra_slack_message do |options|
@@ -243,7 +237,6 @@ platform :ios do
       default_payloads: []
     )
   end
-
 
   desc "Run Slack reporting for QE"
   lane :post_qe_ios_slack_message do |options|
