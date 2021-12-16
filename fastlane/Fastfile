@@ -314,7 +314,7 @@ platform :ios do
         "🚀  <#{build_url}|*#{job_base_name} Build ##{build_id}*> completed in *#{run_time}* 🚀 ",
         "`#{tests_summary}`",
         "`#{retry_summary}`",
-        "*`✅  Xcode Scheme: #{test_scheme} #{test_plan}`*",
+        "*`✅  Xcode Scheme: #{test_scheme}`*",
         "*`✅  Xcode Project Build: #{xcode_project}`*",
         "*`✅  Xcode Test Plan: #{test_plan}`*",
         "`<#{build_url}artifact/fastlane/test_output/report.html|* Click to see last job test results*>`"
