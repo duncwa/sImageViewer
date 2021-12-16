@@ -243,8 +243,8 @@ platform :ios do
     run_time = to_clock(options[:run_time])
     status = options[:status]
     xcode_project = ENV["XCODE_PROJECT"]
-    result = status == "SUCCESS" ? " 🚀 finished in" : " 💣💥failed after "
-    message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} <#{build_url+'artifact/fastlane/test_output/report.html'}|#{'Results'}> *"
+    # result = status == "SUCCESS" ? " 🚀 finished in" : " 💣💥failed after "
+    # message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} <#{build_url+'artifact/fastlane/test_output/report.html'}|#{'Results'}> *"
 
     # XML parsing
     output_xml = "#{pwd}/fastlane/test_output/report.junit"
@@ -278,13 +278,13 @@ platform :ios do
         retry_summary = retries.positive? ? " #{percent_passed.round(2)}% of tests succeeded.  Successfully retried #{retries} tests." : " #{percent_passed.round(2)}% of tests passed. No tests retried."
       end
     rescue StandardError => e
-      UI.important("Failed to extrast tests from \"#{output_xml}\: #{e}")
+      UI.important("Failed to extract tests from \"#{output_xml}\: #{e}")
       tests_summary = "Error unable to locate tests summary data."
     end
 
     if success
       message = [
-        "🚀  <#{build_url}|*#{job_base_name} Build ##{build_id}*> completed in *#{duration}* 🚀 ",
+        "🚀  <#{build_url}|*#{job_base_name} Build ##{build_id}*> completed in *#{run_time}* 🚀 ",
         "`#{tests_summary}`",
         "`#{retry_summary}`",
         "*`:white_check_mark: Xcode Scheme: #{test_scheme} #{test_plan}`*",
@@ -305,7 +305,7 @@ platform :ios do
       emoji = ->(value) { value ? ":x:" : ":white_check_mark:" }
 
       message = [
-        "💣💥 <#{build_url}|*#{job_base_name} Build ##{build_id}*> completed in *#{duration}* 💣💥 ",
+        "💣💥 <#{build_url}|*#{job_base_name} Build ##{build_id}*> completed in *#{run_time}* 💣💥 ",
         "`#{tests_summary}`",
         "`#{retry_summary}`",
         "*`#{emoji.call(success)} Xcode Scheme: #{test_scheme} #{test_plan}`*",
