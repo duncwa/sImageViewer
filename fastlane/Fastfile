@@ -247,7 +247,7 @@ platform :ios do
     message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} <#{build_url+'artifact/fastlane/test_output/report.html'}|#{'Results'}> *"
 
     # XML parsing
-    output_xml  "#{pwd}/fastlane/test_output/report.junit"
+    output_xml = "#{pwd}/fastlane/test_output/report.junit"
     document = File.open(output_xml) { |f| Nokogiri::XML(f) }
     all_tests = nil
     retry_tests = nil
