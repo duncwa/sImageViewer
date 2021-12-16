@@ -193,7 +193,7 @@ platform :ios do
     status = options[:status]
     result = status == "SUCCESS" ? " 🚀 finished in" : " 💣💥failed after "
     success = status == "SUCCESS" ? true : false
-    message = "*#{status} <#{pr_url}|PR-#{change_id}> <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} <#{build_url+'artifact/fastlane/test_output/report.html'}|#{'Results'}> *"
+    message = "*#{status} <#{pr_url}|PR-#{change_id}> - - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} <#{build_url+'artifact/fastlane/test_output/report.html'}|#{'Results'}> *"
     slack(
       channel: ENV["SLACK_CHANNEL"],
       message: message,
