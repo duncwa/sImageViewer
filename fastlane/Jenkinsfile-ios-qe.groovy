@@ -22,6 +22,7 @@ pipeline {
       SLACK_CHANNEL = "${env.SLACK_CHANNEL}"
       DEVICE = "${env.DEVICE}"
       TEST_SCHEME = "${env.TEST_SCHEME}"
+      TEST_PLAN = "${env.TEST_PLAN}"
     }
 
     stages {
