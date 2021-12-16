@@ -239,6 +239,7 @@ platform :ios do
     build_url = ENV["BUILD_URL"]
     job_base_name = ENV["JOB_BASE_NAME"]
     build_id = ENV["BUILD_ID"]
+    pwd = ENV["PWD"]
     run_time = to_clock(options[:run_time])
     status = options[:status]
     xcode_project = ENV["XCODE_PROJECT"]
