@@ -317,7 +317,7 @@ platform :ios do
         "*`✅  Xcode Scheme: #{test_scheme} #{test_plan}`*",
         "*`✅  Xcode Project Build: #{xcode_project}`*",
         "*`✅  Xcode Test Plan: #{test_plan}`*",
-        "`#{build_url} artifact/fastlane/test_output/report.html|* Click to see last job test results*>`"
+        "`<#{build_url}artifact/fastlane/test_output/report.html|* Click to see last job test results*>`"
       ].join("\n\t\t")
     else
       begin
@@ -338,7 +338,7 @@ platform :ios do
         "*`#{emoji.call(qe_build_succeeded)} Xcode Scheme: #{test_scheme}`*",
         "*`#{emoji.call(qe_build_succeeded)} Xcode Project Build: #{xcode_project}`*",
         "*`#{emoji.call(qe_build_succeeded)} Xcode Test Plan: #{test_plan}`*",
-        "`#{build_url} artifact/fastlane/test_output/report.html|* Click to see last job test results*>`"
+        "`<#{build_url}artifact/fastlane/test_output/report.html|* Click to see last job test results*>`"
       ].join("\n\t\t")
     end
 
