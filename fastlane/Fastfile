@@ -277,7 +277,7 @@ platform :ios do
         percent_passed = (successful.to_f / total) * 100.0
         retry_summary = retries.positive? ? " #{percent_passed.round(2)}% of tests succeeded.  Successfully retried #{retries} tests." : " #{percent_passed.round(2)}% of tests passed. No tests retried."
       end
-    rescue SandardError => e
+    rescue StandardError => e
       UI.important("Failed to extrast tests from \"#{output_xml}\: #{e}")
       tests_summary = "Error unable to locate tests summary data."
     end
