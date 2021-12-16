@@ -120,6 +120,7 @@ platform :ios do
   lane :test_ios_qe do
     device = ENV["DEVICE"]
     test_scheme = ENV["TEST_SCHEME"]
+    test_plan = ENV["TEST_PLAN"]
     run_tests(
       device: device,
       scheme: test_scheme,
