@@ -255,6 +255,7 @@ platform :ios do
     status = options[:status]
     xcode_project = ENV["XCODE_PROJECT"]
     test_scheme = ENV["TEST_SCHEME"]
+    test_plan = ENV["TEST_PLAN"]
     # result = status == "SUCCESS" ? " 🚀 finished in" : " 💣💥failed after "
     # message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} <#{build_url+'artifact/fastlane/test_output/report.html'}|#{'Results'}> *"
 
