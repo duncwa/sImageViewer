@@ -193,11 +193,7 @@ platform :ios do
     status = options[:status]
     result = status == "SUCCESS" ? " 🚀 finished in" : " 💣💥failed after "
     success = status == "SUCCESS" ? true : false
-<<<<<<< HEAD
-    message = "*#{status} - <#{pr_url}|PRA-#{job_base_name} Build ##{build_id}> #{result} #{run_time} <#{build_url+'artifact/fastlane/test_output/report.html'}|#{'Results'}> *"
-=======
     message = "*#{status} PR #{change_id}- <#{pr_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} <#{build_url+'artifact/fastlane/test_output/report.html'}|#{'Results'}> *"
->>>>>>> b909985 (Update PR url in slack message)
     slack(
       channel: ENV["SLACK_CHANNEL"],
       message: message,
