@@ -1,9 +1,22 @@
+<<<<<<< HEAD
+=======
+GIT
+  remote: https://github.com/microsoft/fastlane-plugin-appcenter.git
+  revision: b0e3bfcafe1118f20a52b2ebb3fef6720b41ce07
+  specs:
+    fastlane-plugin-appcenter (1.11.1)
+
+>>>>>>> ffaa489 (Update bundler and gems)
 GEM
   remote: https://rubygems.org/
   specs:
     CFPropertyList (3.0.5)
       rexml
+<<<<<<< HEAD
     activesupport (6.1.4.3)
+=======
+    activesupport (6.1.4.4)
+>>>>>>> ffaa489 (Update bundler and gems)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -138,7 +151,11 @@ GEM
     faraday-rack (1.0.0)
     faraday_middleware (1.2.0)
       faraday (~> 1.0)
+<<<<<<< HEAD
     fastimage (2.2.5)
+=======
+    fastimage (2.2.6)
+>>>>>>> ffaa489 (Update bundler and gems)
     fastlane (2.199.0)
       CFPropertyList (>= 2.3, < 4.0.0)
       addressable (>= 2.8, < 3.0.0)
@@ -178,7 +195,10 @@ GEM
       xcodeproj (>= 1.13.0, < 2.0.0)
       xcpretty (~> 0.3.0)
       xcpretty-travis-formatter (>= 0.0.3)
+<<<<<<< HEAD
     fastlane-plugin-appcenter (1.11.1)
+=======
+>>>>>>> ffaa489 (Update bundler and gems)
     ffi (1.15.4)
     fourflusher (2.3.1)
     fuzzy_match (2.0.4)

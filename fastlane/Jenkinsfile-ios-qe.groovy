@@ -19,8 +19,7 @@ pipeline {
       DANGER_GITHUB_API_TOKEN =credentials("s.githubtoken")
       ghprbPullId = "${env.PULL_REQ_NUM}"
       BUILD_NUM = "${env.BUILD_ID}"
-      PR_NUM = "${env.PULL_REQ_NUM}"
-      PR_URL = "https://github.com/duncwa/sImageViewer/pull/${env.PULL_REQ_NUM}"
+      PR_URL = "https://github.com/duncwa/sImageViewer"
       SLACK_CHANNEL = "${env.SLACK_CHANNEL}"
     }
 
