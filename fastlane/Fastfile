@@ -55,6 +55,7 @@ platform :ios do
   lane :publish_rls_ipa do
     generate_rls_ipa
     appcenter_upload_rls
+    appstore_rls_ipa
   end
 
   desc "Run unit tests for sFastIcon iOS App"
@@ -75,6 +76,13 @@ platform :ios do
       derived_data_path: "fastlane/build",
       output_directory: "fastlane/build"
     )
+  end
+
+  lane :appstore_rls_ipa do
+    capture_screenshots                  # generate new screenshots for the App Store
+    #sync_code_signing(type: "appstore")  # see code signing guide for more information
+    upload_to_app_store                  # upload your app to App Store Connect
+    slack(message: "Successfully uploaded a new App Store build")
   end
 
   lane :generate_dev_ipa do
@@ -110,9 +118,11 @@ platform :ios do
 
   desc "Run simulator tests for sFastIcon iOS App"
   lane :test_ios_qe do
+    device = ENV["DEVICE"]
+    test_scheme = ENV["TEST_SCHEME"]
     run_tests(
-      device: "iPhone 13 Pro",
-      scheme: "sFastIconUITests",
+      device: device,
+      scheme: test_scheme,
       code_coverage: true,
       output_directory: "fastlane/test_output",
       formatter: "xcpretty-json-formatter",
@@ -243,6 +253,7 @@ platform :ios do
     run_time = to_clock(options[:run_time])
     status = options[:status]
     xcode_project = ENV["XCODE_PROJECT"]
+    test_scheme = ENV["TEST_SCHEME"]
     # result = status == "SUCCESS" ? " 🚀 finished in" : " 💣💥failed after "
     # message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} <#{build_url+'artifact/fastlane/test_output/report.html'}|#{'Results'}> *"
 

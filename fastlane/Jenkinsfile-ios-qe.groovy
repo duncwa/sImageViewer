@@ -16,11 +16,12 @@ pipeline {
     }
 
     environment {
-      DANGER_GITHUB_API_TOKEN =credentials("s.githubtoken")
+      DANGER_GITHUB_API_TOKEN = credentials("s.githubtoken")
       ghprbPullId = "${env.PULL_REQ_NUM}"
       BUILD_NUM = "${env.BUILD_ID}"
-      PR_URL = "https://github.com/duncwa/sImageViewer"
       SLACK_CHANNEL = "${env.SLACK_CHANNEL}"
+      DEVICE = "${env.DEVICE}"
+      TEST_SCHEME = "${env.TEST_SCHEME}"
     }
 
     stages {
