@@ -16,10 +16,9 @@ pipeline {
     }
 
     environment {
-      FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD = credentials("appletransporterfastlane")
+      FASTLANE_PASSWORD = credentials("appledw4workonly")
       BUILD_NUM = "${env.BUILD_ID}"
       SLACK_CHANNEL = "${env.SLACK_CHANNEL}"
-
     }
 
     stages {

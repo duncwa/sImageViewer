@@ -6,7 +6,6 @@
 #   Copyright © 2020. Duncwa LLC.  All rights reserved
 
 require_relative "functions/readable_time"
-require_relative "functions/nilerize"
 
 default_platform(:ios)
 platform :ios do
