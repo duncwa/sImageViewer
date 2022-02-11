@@ -17,7 +17,7 @@ pipeline {
 
     environment {
       BUILD_NUM = "${env.BUILD_ID}"
-      SLACK = "#cs-simageviewer-jenkins"
+      SLACK_CHANNEL = "${env.SLACK_CHANNEL}"
     }
 
     stages {

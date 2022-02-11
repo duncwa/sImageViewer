@@ -1,9 +1,3 @@
-GIT
-  remote: https://github.com/microsoft/fastlane-plugin-appcenter.git
-  revision: b0e3bfcafe1118f20a52b2ebb3fef6720b41ce07
-  specs:
-    fastlane-plugin-appcenter (1.11.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
