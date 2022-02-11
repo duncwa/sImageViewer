@@ -9,16 +9,17 @@ change_id = ENV['CHANGE_ID']
 #                                   Jenkins PRA Results formatter                          #
 ############################################################################################
 
-message = +"\n---\n\n"
-message = +"\n---\n\n"
 markdown("Pull Request Title: " + github.pr_title)
 markdown("Pull Request Number: " + ENV['CHANGE_ID'])
 markdown("Build Number: " + build_id)
 
-message = +"\n---\n\n"
 message('[Test Results]('+ENV['BUILD_URL']+'artifact/fastlane/test_output/report.html)')
 message('[Jenkins Build URL]('+build_url+')')
-message = +"\n---\n\n"
-message = +"\n---\n\n"
+
 warn("PR is classed as Work in Progress[DO NOT MERGE]") if github.pr_title.include? "[WIP]"
 warn("Big PR") if git.lines_of_code > 500
+
+
+####  Use to place in text in box in PR:
+####  message = +"\n---\n\n"
+####  message = +"\n---\n\n"
