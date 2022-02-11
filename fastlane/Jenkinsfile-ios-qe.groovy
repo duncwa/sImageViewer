@@ -16,12 +16,13 @@ pipeline {
     }
 
     environment {
-      DANGER_GITHUB_API_TOKEN =credentials("s.githubtoken")
+      DANGER_GITHUB_API_TOKEN = credentials("s.githubtoken")
       ghprbPullId = "${env.PULL_REQ_NUM}"
       BUILD_NUM = "${env.BUILD_ID}"
-      PR_NUM = "${env.PULL_REQ_NUM}"
-      PR_URL = "https://github.com/duncwa/sImageViewer/pull/${env.PULL_REQ_NUM}"
       SLACK_CHANNEL = "${env.SLACK_CHANNEL}"
+      DEVICE = "${env.DEVICE}"
+      TEST_SCHEME = "${env.TEST_SCHEME}"
+      TEST_PLAN = "${env.TEST_PLAN}"
     }
 
     stages {
@@ -56,18 +57,18 @@ pipeline {
 
       success {
         sh "echo 'Build Successful' "
-        sh "bundle exec fastlane post_pra_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
+        sh "bundle exec fastlane post_qe_ios_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
       }
 
       unstable {
         sh "echo 'Build Unstable' "
-        sh "bundle exec fastlane post_pra_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
+        sh "bundle exec fastlane post_qe_ios_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
 
       }
 
       failure {
         sh "echo 'Build Failed' "
-        sh "bundle exec fastlane post_pra_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
+        sh "bundle exec fastlane post_qe_ios_slack_message run_time:${currentBuild.duration / 1000} status:${currentBuild.result}"
       }
 
     }

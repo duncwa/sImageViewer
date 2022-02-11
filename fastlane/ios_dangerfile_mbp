@@ -3,7 +3,13 @@ require "danger"
 build_id = ENV['BUILD_ID']
 build_url = ENV['BUILD_URL']
 
-message = "\n---\n\n"
+
+message = +"\n---\n\n"
+
+############################################################################################
+#                                   Jenkins PRA Results formatter                          #
+############################################################################################
+
 
 markdown("Pull Request Title: " + github.pr_title)
 markdown("Pull Request Number: " + ENV['CHANGE_ID'])

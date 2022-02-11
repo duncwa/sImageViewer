@@ -1,0 +1,28 @@
+# ios_dangerfile_test
+# sImageViewer
+#
+# Created by Duncan Wallace on 12/17/2021
+# Copyright © 2021 Duncwa LLC. All rights reserved.
+#
+
+require "danger"
+
+build_id = ENV['BUILD_ID']
+build_url = ENV['BUILD_URL']
+
+message = +"\n---\n\n"
+
+############################################################################################
+#                                   Jenkins PRA Results formatter                          #
+############################################################################################
+
+markdown("Pull Request Title: " + github.pr_title)
+markdown("Pull Request Number: " + ENV['PULL_REQ_NUM'])
+markdown("Build Number: " + build_id)
+
+
+
+message('[Test Results]('+ENV['BUILD_URL']+'artifact/fastlane/test_output/report.html)')
+message('[Jenkins Build URL]('+build_url+')')
+warn("PR is classed as Work in Progress[DO NOT MERGE]") if github.pr_title.include? "[WIP]"
+warn("Big PR") if git.lines_of_code > 500
