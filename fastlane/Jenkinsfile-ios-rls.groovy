@@ -19,6 +19,8 @@ pipeline {
       FASTLANE_PASSWORD = credentials("appledw4workonly")
       FASLANE_SESSION = credentials("s.applesession")
       FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD = credentials("s.applicationspecific")
+      FASTLANE_APPLE_API = credentials("s.appleapikey")
+      FASTLANE_APPLE_APPSTORE_API = credentials("s.appleapikey_appstore")
       BUILD_NUM = "${env.BUILD_ID}"
       SLACK_CHANNEL = "${env.SLACK_CHANNEL}"
     }
