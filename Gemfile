@@ -7,6 +7,8 @@
 
 # source 'https://github.com/danger'
 source 'https://rubygems.org'
+  gem 'octokit'
+  gem 'gitlab'
   gem 'aws-sdk-s3'
   gem 'fastlane'
   gem 'danger'
