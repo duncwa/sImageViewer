@@ -225,7 +225,6 @@ platform :ios do
     slack(
       channel: ENV["SLACK_CHANNEL"],
       message: message,
-      username: "cicdbuild",
       success: success,
       default_payloads: []
     )
@@ -371,7 +370,6 @@ platform :ios do
     slack(
       channel: ENV["SLACK_CHANNEL"],
       message: message,
-      username: "cicdbuild",
       pretext: "iOS QE Test Job Summary",
       success: success,
       default_payloads: []
