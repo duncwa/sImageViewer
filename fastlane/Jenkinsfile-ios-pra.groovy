@@ -25,6 +25,7 @@ pipeline {
     PR_NUM = "${env.PULL_REQ_NUM}"
     PR_URL = "https://github.com/duncwa/sImageViewer/pull/${env.PULL_REQ_NUM}"
     GIT_URL_1 = "https://github.com/duncwa/sImageViewer"
+    SLACK_URL = credentials("s.slackwebhookurl")
     SLACK_CHANNEL = "${env.SLACK_CHANNEL}"
   }
 
