@@ -15,9 +15,9 @@ pipeline {
       buildDiscarder(logRotator(numToKeepStr: "5", artifactNumToKeepStr: "5"))
     }
 
-
     environment {
       BUILD_NUM = "${env.BUILD_ID}"
+      SLACK_URL = credentials("s.slackwebhookurl")
       SLACK_CHANNEL = "${env.SLACK_CHANNEL}"
     }
 

@@ -22,6 +22,7 @@ pipeline {
       FASTLANE_APPLE_API = credentials("s.appleapikey")
       FASTLANE_APPLE_APPSTORE_API = credentials("s.appleapikey_appstore")
       BUILD_NUM = "${env.BUILD_ID}"
+      SLACK_URL = credentials("s.slackwebhookurl")
       SLACK_CHANNEL = "${env.SLACK_CHANNEL}"
     }
 
