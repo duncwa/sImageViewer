@@ -35,7 +35,7 @@ pipeline {
       stage('Inspect for Sensitive Data') {
           steps {
             echo 'Run Inspection'
-            sh 'bundle exec fastlane run_ios_ins'
+            sh 'bundle exec fastlane bex_ios_ins'
           }
           post {
             always { stash includes: "fastlane/build/**/*", name: "run_ios_ins", allowEmpty: true }
