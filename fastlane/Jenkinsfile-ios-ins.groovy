@@ -50,7 +50,7 @@ pipeline {
         }
         archiveArtifacts artifacts: "fastlane/build/*dSYM.zip", fingerprint: true
         archiveArtifacts artifacts: "fastlane/build/*.ipa", fingerprint: true
-        archiveArtifacts artifacts: "fastlane/build/output-*", fingerprint: true
+        archiveArtifacts artifacts: "fastlane/build/output-*/**/*", fingerprint: true
       }
 
       success {
