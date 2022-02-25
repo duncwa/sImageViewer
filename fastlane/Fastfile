@@ -10,6 +10,10 @@ require_relative "functions/readable_time"
 default_platform(:ios)
 platform :ios do
 
+  ##################################################
+  #  iOS DEV and RLS Lanes
+  ##################################################
+
   desc "Upload dsyms and ipa results from dev builds"
   lane :appcenter_upload_dev do
     appcenter_upload(
@@ -26,10 +30,21 @@ platform :ios do
     )
   end
 
-  desc "Publish Develop Builds"
-  lane :publish_dev_ipa do
-    generate_dev_ipa
-    appcenter_upload_dev
+  desc "Upload dsyms and ipa results to AppCenter"
+  lane :appcenter_upload_rls do
+    appcenter_upload(
+      api_token: ENV["APPCENTER_TOKEN_DLO"],
+      owner_name: ENV["APPCENTER_ORG"],
+      owner_type: "organization", # Default is user - set to organization for appcenter organizations
+      app_name: ENV["APPCENTER_RLS_APP_NAME"],
+      notify_testers: true, # Set to false if you don't want to notify testers of your new release (default: `false`)
+      file: "fastlane/build/FastImageViewer.ipa",
+      dsym: ENV["APPCENTER_DISTRIBUTE_DSYM"],
+      build_number: ENV["APPCENTER_DISTRIBUTE_BUILD_NUMBER"],
+      version: ENV["APPCENTER_DISTRIBUTE_VERSION"],
+      app_platform: "ios",
+      app_os: "iOS"
+    )
   end
 
   desc "Generate Develop Builds"
@@ -52,20 +67,15 @@ platform :ios do
     )
   end
 
-  desc "Publish Release Builds"
-  lane :publish_rls_ipa do
-    generate_rls_ipa
-    appcenter_upload_rls
-    upload_to_appstore
-  end
-
   desc "Generate Release Builds"
   lane :generate_rls_ipa do
+    destination = ENV["DESTINATION_RELEASE"]
     build_app(
       codesigning_identity: "Apple Distribution",
       clean: true,
       scheme: "sFastIcon",
       configuration: "Release",
+      destination: destination,
       export_options: {
         method: "app-store",
         provisioningProfiles: {
@@ -79,36 +89,63 @@ platform :ios do
     )
   end
 
-  desc "Upload dsyms and ipa results to AppCenter"
-  lane :appcenter_upload_rls do
-    appcenter_upload(
-      api_token: ENV["APPCENTER_TOKEN_DLO"],
-      owner_name: ENV["APPCENTER_ORG"],
-      owner_type: "organization", # Default is user - set to organization for appcenter organizations
-      app_name: ENV["APPCENTER_RLS_APP_NAME"],
-      notify_testers: true, # Set to false if you don't want to notify testers of your new release (default: `false`)
-      file: "fastlane/build/FastImageViewer.ipa",
-      dsym: ENV["APPCENTER_DISTRIBUTE_DSYM"],
-      build_number: ENV["APPCENTER_DISTRIBUTE_BUILD_NUMBER"],
-      version: ENV["APPCENTER_DISTRIBUTE_VERSION"],
-      app_platform: "ios",
-      app_os: "iOS"
-    )
+  desc "Publish Develop Builds"
+  lane :publish_dev_ipa do
+    generate_dev_ipa
+    appcenter_upload_dev
   end
 
-  desc "Upload ipa from Release Builds to AppStore"
+  desc "Publish Release Builds"
+  lane :publish_rls_ipa do
+    generate_rls_ipa
+    appcenter_upload_rls
+    upload_to_appstore
+  end
+
+  desc "API Key Using JWT authorization for upload to AppStore"
   lane :upload_to_appstore do
+    api_key = app_store_connect_api_key(
+      # key_filepath: ENV["FASTLANE_APPLE_APPSTORE_API"], #admin
+      # key_filepath: ENV["FASTLANE_APPLE_API"], #appmanager
+      # key_filepath: "/Users/cicdbuild/Private/AuthKey_4SYDZ54WSM.p8", #admin
+      # key_filepath: "/Users/cicdbuild/Private/AuthKey_67WSB97MPD.p8", #appmanager
+      # key_id: "4SYDZ54WSM", #Credential in Jenkins s.appleapikey_appstore #admin
+      # key_id: "67WSB97MPD", #Credential in Jenkins s.appleapikey #appmanager
+      key_id: "67WSB97MPD",
+      issuer_id: "69a6de91-1cc7-47e3-e053-5b8c7c11a4d1",
+      #key_filepath: key_filepath_appmanager, #"./file_path_to.p8", Use key_filepath_<option_here> from above "appmanger" or "admin"
+      #key_filepath: "/Users/duncwa/Private/AuthKey_67WSB97MPD.p8",
+      key_filepath: ENV["FASTLANE_APPLE_API"], #appmanager
+      duration: 1200, # optional (maximum 1200)
+      in_house: false # optional but may be required if using match/sigh
+    )
     deliver(
       ipa: "fastlane/build/FastImageViewer.ipa",
       skip_screenshots: true,
-      force: true
+      force: true,
+      precheck_include_in_app_purchases: false,
+      api_key: api_key
     )
   end
 
+  # desc "Upload ipa from Release Builds to AppStore"
+  # lane :upload_to_appstore do
+  #   deliver(
+  #     ipa: "fastlane/build/FastImageViewer.ipa",
+  #     skip_screenshots: true,
+  #     force: true
+  #   )
+  # end
+
+  ##################################################
+  #  iOS PRA and QE Lanes
+  ##################################################
+
   desc "Run unit tests for sFastIcon iOS App"
   lane :test_ios_pra do
+    destination = ENV["DESTINATION"]
     run_tests(
-      device: "iPhone 13 Pro",
+      destination: destination,
       scheme: "sFastIconUnitTests",
       code_coverage: true,
       output_directory: "fastlane/test_output",
@@ -132,8 +169,12 @@ platform :ios do
     )
   end
 
+  ##################################################
+  #  iOS INS, Screenshots and Danger Lanes
+  ##################################################
+
   desc "Perform Inspection of Artifacts using Bulkextractor"
-  lane :run_ios_ins do
+  lane :bex_ios_ins do
     generate_rls_ipa
     ## Call inspection bulkextractor on *.ipa and dSYMS file
     sh 'echo $PWD'
@@ -144,9 +185,9 @@ platform :ios do
 
   desc "Generate new localized screenshots for sFastIcon"
   lane :screenshots do
-    device = ENV["DEVICE"]
+    devices = ENV["DEVICES"]
     capture_screenshots(
-      devices: ["iPhone X", "iPhone 8", "iPhone 11", "iPhone 11 Pro Max", "iPhone 13 Pro Max"],
+      devices: devices,
       scheme: "sFastIconUITests"
     )
   end
@@ -161,16 +202,21 @@ platform :ios do
     sh 'bundle exec danger --dangerfile=ios_dangerfile'
   end
 
-  desc "Run Slack Testing"
-  lane :slack_test do
-    build_url = "http://mobileci-prod.local:8080/job/Consumer/job/ImageViewer/job/ImageViewerios/job/PRA/job/IMG-IOS-PRA/201/"
-    job_base_name = "TEST-IMG-IOS-PRA"
-    build_id = "1"
-    run_time = to_clock(4200)
-    status = "SUCCESS"
+  ##################################################
+  #  iOS Slack Lanes
+  ##################################################
+
+  desc "Run Slack reporting for DEV"
+  lane :post_dev_slack_message do |options|
+    build_url = ENV["BUILD_URL"]
+    job_base_name = ENV["JOB_BASE_NAME"]
+    appcenter_url = ENV["APPCENTER_DEV_APP_URL"]
+    build_id = ENV["BUILD_ID"]
+    run_time = to_clock(options[:run_time])
+    status = options[:status]
     result = status == "SUCCESS" ? " 🚀 finished in" : " 💣💥failed after "
     success = status == "SUCCESS" ? true : false
-    message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} <#{build_url+'artifact/fastlane/test_output/report.html'}|#{'Results'}> *"
+    message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} <#{appcenter_url}|#{'AppCenter Results'}>*"
     slack(
       channel: ENV["SLACK_CHANNEL"],
       message: message,
@@ -196,47 +242,6 @@ platform :ios do
     slack(
       channel: ENV["SLACK_CHANNEL"],
       message: message,
-      username: "cicdbuild",
-      success: success,
-      default_payloads: []
-    )
-  end
-
-  desc "Run Slack reporting for DEV"
-  lane :post_dev_slack_message do |options|
-    build_url = ENV["BUILD_URL"]
-    job_base_name = ENV["JOB_BASE_NAME"]
-    appcenter_url = ENV["APPCENTER_DEV_APP_URL"]
-    build_id = ENV["BUILD_ID"]
-    run_time = to_clock(options[:run_time])
-    status = options[:status]
-    result = status == "SUCCESS" ? " 🚀 finished in" : " 💣💥failed after "
-    success = status == "SUCCESS" ? true : false
-    message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} <#{appcenter_url}|#{'AppCenter Results'}>*"
-    slack(
-      channel: ENV["SLACK_CHANNEL"],
-      message: message,
-      username: "cicdbuild",
-      success: success,
-      default_payloads: []
-    )
-  end
-
-  desc "Run Slack reporting for RLS"
-  lane :post_rls_slack_message do |options|
-    build_url = ENV["BUILD_URL"]
-    job_base_name = ENV["JOB_BASE_NAME"]
-    appcenter_url = ENV["APPCENTER_RLS_APP_URL"]
-    build_id = ENV["BUILD_ID"]
-    run_time = to_clock(options[:run_time])
-    status = options[:status]
-    result = status == "SUCCESS" ? " 🚀 finished in" : " 💣💥failed after "
-    success = status == "SUCCESS" ? true : false
-    message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} <#{appcenter_url}|#{'AppCenter Results'}>*"
-    slack(
-      channel: ENV["SLACK_CHANNEL"],
-      message: message,
-      username: "cicdbuild",
       success: success,
       default_payloads: []
     )
@@ -342,8 +347,46 @@ platform :ios do
     slack(
       channel: ENV["SLACK_CHANNEL"],
       message: message,
-      username: "cicdbuild",
       pretext: "iOS QE Test Job Summary",
+      success: success,
+      default_payloads: []
+    )
+  end
+
+  desc "Run Slack reporting for RLS"
+  lane :post_rls_slack_message do |options|
+    build_url = ENV["BUILD_URL"]
+    job_base_name = ENV["JOB_BASE_NAME"]
+    appcenter_url = ENV["APPCENTER_RLS_APP_URL"]
+    build_id = ENV["BUILD_ID"]
+    run_time = to_clock(options[:run_time])
+    status = options[:status]
+    result = status == "SUCCESS" ? " 🚀 finished in" : " 💣💥failed after "
+    success = status == "SUCCESS" ? true : false
+    message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} <#{appcenter_url}|#{'AppCenter Results'}>*"
+    slack(
+      channel: ENV["SLACK_CHANNEL"],
+      message: message,
+      username: "cicdbuild",
+      success: success,
+      default_payloads: []
+    )
+  end
+
+  desc "Run Slack Testing"
+  lane :slack_test do
+    build_url = "http://mobileci-prod.local:8080/job/Consumer/job/ImageViewer/job/ImageViewerios/job/PRA/job/IMG-IOS-PRA/201/"
+    job_base_name = "TEST-IMG-IOS-PRA"
+    build_id = "1"
+    run_time = to_clock(4200)
+    status = "SUCCESS"
+    result = status == "SUCCESS" ? " 🚀 finished in" : " 💣💥failed after "
+    success = status == "SUCCESS" ? true : false
+    message = "*#{status} - <#{build_url}|#{job_base_name} Build ##{build_id}> #{result} #{run_time} <#{build_url+'artifact/fastlane/test_output/report.html'}|#{'Results'}> *"
+    slack(
+      channel: ENV["SLACK_CHANNEL"],
+      message: message,
+      username: "cicdbuild",
       success: success,
       default_payloads: []
     )
