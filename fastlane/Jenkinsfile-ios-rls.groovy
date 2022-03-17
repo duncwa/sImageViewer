@@ -16,7 +16,7 @@ pipeline {
     }
 
     environment {
-      FASTLANE_PASSWORD = credentials("appledw4workonly")
+      FASTLANE_PASSWORD = credentials('appledw4workonly')
       BUILD_NUM = "${env.BUILD_ID}"
       SLACK_CHANNEL = "${env.SLACK_CHANNEL}"
     }

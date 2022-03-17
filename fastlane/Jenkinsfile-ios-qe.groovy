@@ -16,7 +16,7 @@ pipeline {
     }
 
     environment {
-      DANGER_GITHUB_API_TOKEN = credentials("s.githubtoken")
+      DANGER_GITHUB_API_TOKEN = credentials('s.githubtoken')
       ghprbPullId = "${env.PULL_REQ_NUM}"
       BUILD_NUM = "${env.BUILD_ID}"
       SLACK_CHANNEL = "${env.SLACK_CHANNEL}"
