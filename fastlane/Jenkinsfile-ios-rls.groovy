@@ -30,17 +30,20 @@ pipeline {
       stage('Setup') {
           steps {
               echo 'Install Bundle Ruby Gems'
-              sh 'bundle install'
               sh 'pwd'
               sh 'echo $PATH'
+              sh 'rvm -v'
               sh 'rvm list'
+              sh 'ruby -v'
+              sh 'gem -v'
+              sh 'bundle install'
               sh 'printenv'
           }
       }
       stage('Build and Upload IPA') {
           steps {
               echo 'Generate IPA'
-              sh 'bundle exec fastlane publish_rls_ipa'
+              sh "bundle exec fastlane publish_rls_ipa start_time:${currentBuild.startTimeInMillis}"
           }
           post {
             always { stash includes: "fastlane/build/**/*", name: "publish_rls_ipa", allowEmpty: true }

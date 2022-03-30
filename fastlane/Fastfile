@@ -6,6 +6,7 @@
 #   Copyright © 2020. Duncwa LLC.  All rights reserved
 
 require_relative "functions/readable_time"
+require_relative "functions/build_number"
 
 default_platform(:ios)
 platform :ios do
@@ -97,6 +98,10 @@ platform :ios do
 
   desc "Publish Release Builds"
   lane :publish_rls_ipa do
+    start_time = ENV["START_TIME"]
+    build_version =
+    build_number_appstore =
+    build_number = build_number(start_time)
     generate_rls_ipa
     appcenter_upload_rls
     upload_to_appstore

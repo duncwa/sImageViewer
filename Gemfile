@@ -25,6 +25,7 @@ source 'https://rubygems.org'
   gem 'pry'
   gem 'psych'
   gem 'rubyzip'
+  gem 'time'
 # gem 'golint'
 # gem 'danger-ruby-swiftlint' #A Danger plugin for SwiftLint.
 # gem 'danger-xcode_summary' #A Danger plugin showing all build errors, warnings and unit tests results from xcodebuild.
