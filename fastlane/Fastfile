@@ -98,10 +98,6 @@ platform :ios do
 
   desc "Publish Release Builds"
   lane :publish_rls_ipa do
-    start_time = ENV["START_TIME"]
-    build_version =
-    build_number_appstore =
-    build_number = build_number(start_time)
     generate_rls_ipa
     appcenter_upload_rls
     upload_to_appstore
@@ -109,6 +105,8 @@ platform :ios do
 
   desc "API Key Using JWT authorization for upload to AppStore"
   lane :upload_to_appstore do
+    build_number = build_number()
+    puts "Build number is: #{build_number}"
     api_key = app_store_connect_api_key(
       # key_filepath: ENV["FASTLANE_APPLE_APPSTORE_API"], #admin
       # key_filepath: ENV["FASTLANE_APPLE_API"], #appmanager
@@ -125,6 +123,7 @@ platform :ios do
       in_house: false # optional but may be required if using match/sigh
     )
     deliver(
+      build_number: build_number,
       ipa: "fastlane/build/FastImageViewer.ipa",
       skip_screenshots: true,
       force: true,
