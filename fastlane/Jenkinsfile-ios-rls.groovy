@@ -16,6 +16,7 @@ pipeline {
     }
 
     environment {
+      APPCENTER_TOKEN_DLO = credentials('s.appcenterduncwa_full')
       FASTLANE_PASSWORD = credentials("appledw4workonly")
       FASLANE_SESSION = credentials("s.applesession")
       FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD = credentials("s.applicationspecific")
