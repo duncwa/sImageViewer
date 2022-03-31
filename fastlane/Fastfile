@@ -123,7 +123,6 @@ platform :ios do
       in_house: false # optional but may be required if using match/sigh
     )
     deliver(
-      build_number: build_number,
       ipa: "fastlane/build/FastImageViewer.ipa",
       skip_screenshots: true,
       force: true,
