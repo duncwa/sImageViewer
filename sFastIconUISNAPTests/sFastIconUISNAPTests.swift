@@ -28,7 +28,7 @@ class sFastIconUISNAPTests: XCTestCase {
         let app = XCUIApplication()
         setupSnapshot(app)
         app.launch()
-                        
+                                
     }
 
     func testLaunchPerformance() throws {
