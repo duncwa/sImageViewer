@@ -6,6 +6,7 @@
 #   Copyright © 2020. Duncwa LLC.  All rights reserved
 
 require_relative "functions/readable_time"
+require_relative "functions/build_number"
 
 default_platform(:ios)
 platform :ios do
@@ -16,6 +17,7 @@ platform :ios do
 
   desc "Upload dsyms and ipa results from dev builds"
   lane :appcenter_upload_dev do
+    xcversion(version: ENV["XCODE_VERSION"])
     appcenter_upload(
       api_token: ENV["APPCENTER_TOKEN_DLO"],
       owner_name: ENV["APPCENTER_ORG"],
@@ -32,6 +34,7 @@ platform :ios do
 
   desc "Upload dsyms and ipa results to AppCenter"
   lane :appcenter_upload_rls do
+    xcversion(version: ENV["XCODE_VERSION"])
     appcenter_upload(
       api_token: ENV["APPCENTER_TOKEN_DLO"],
       owner_name: ENV["APPCENTER_ORG"],
@@ -49,6 +52,7 @@ platform :ios do
 
   desc "Generate Develop Builds"
   lane :generate_dev_ipa do
+    xcversion(version: ENV["XCODE_VERSION"])
     build_app(
       codesigning_identity: "Apple Development",
       clean: true,
@@ -69,6 +73,7 @@ platform :ios do
 
   desc "Generate Release Builds"
   lane :generate_rls_ipa do
+    xcversion(version: ENV["XCODE_VERSION"])
     destination = ENV["DESTINATION_RELEASE"]
     build_app(
       codesigning_identity: "Apple Distribution",
@@ -104,6 +109,9 @@ platform :ios do
 
   desc "API Key Using JWT authorization for upload to AppStore"
   lane :upload_to_appstore do
+    xcversion(version: ENV["XCODE_VERSION"])
+    build_number = build_number()
+    puts "Build number is: #{build_number}"
     api_key = app_store_connect_api_key(
       # key_filepath: ENV["FASTLANE_APPLE_APPSTORE_API"], #admin
       # key_filepath: ENV["FASTLANE_APPLE_API"], #appmanager
@@ -143,6 +151,7 @@ platform :ios do
 
   desc "Run unit tests for sFastIcon iOS App"
   lane :test_ios_pra do
+    xcversion(version: ENV["XCODE_VERSION"])
     destination = ENV["DESTINATION"]
     run_tests(
       destination: destination,
@@ -156,6 +165,7 @@ platform :ios do
 
   desc "Run simulator tests for sFastIcon iOS App"
   lane :test_ios_qe do
+    xcversion(version: ENV["XCODE_VERSION"])
     device = ENV["DEVICE"]
     test_scheme = ENV["TEST_SCHEME"]
     test_plan = ENV["TEST_PLAN"]
@@ -185,6 +195,7 @@ platform :ios do
 
   desc "Generate new localized screenshots for sFastIcon"
   lane :screenshots do
+    xcversion(version: ENV["XCODE_VERSION"])
     devices = ENV["DEVICES"]
     capture_screenshots(
       devices: devices,
